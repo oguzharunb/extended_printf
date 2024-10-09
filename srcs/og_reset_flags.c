@@ -1,6 +1,6 @@
 #include "../includes/og_printf.h"
 
-og_reset_flags(t_flags *flags)
+void	og_reset_flags(t_flags *flags)
 {
 	flags->dyn_width = 0;
 	flags->flag_hash = 0;
