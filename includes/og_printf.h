@@ -1,4 +1,4 @@
-# define CONVERSIONS "scdeEfiouxX%"
+# define CONVERSIONS "bscdeEfiouxX%"
 # define FLAGS "0#+- "
 # define LENGTH_MODIFIER "hl"
 # define NUMBERS "0123456789"
