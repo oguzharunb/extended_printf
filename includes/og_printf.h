@@ -33,8 +33,12 @@ typedef struct s_flags
 	int	precision;
 	int	size;
 } t_flags;
+
 void	og_fill_flag_bag(char const *to_replace, size_t size, t_flags *flags);
 void	og_reset_flags(t_flags *flags);
 void	print_flags(t_flags *flags); // temporary
 int		og_isin(char const *str, char c);
+
+size_t og_length_s(t_flags *flags, char const *str);
+
 #endif
