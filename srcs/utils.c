@@ -1,3 +1,6 @@
+#include "../includes/og_printf.h"
+#include <stdio.h> // temporary
+
 int	og_isin(char const *str, char c)
 {
 	while (*str)
@@ -7,4 +10,19 @@ int	og_isin(char const *str, char c)
 		str++;
 	}
 	return (0);
+}
+
+void	print_flags(t_flags *flags) // temporary
+{
+	printf("flag_min: %d\n", flags->flag_min);
+	printf("flag_plus: %d\n", flags->flag_plus);
+	printf("flag_space: %d\n", flags->flag_space);
+	printf("flag_zero: %d\n", flags->flag_zero);
+	printf("flag_hash: %d\n", flags->flag_hash);
+	printf("lm_short: %d\n", flags->lm_short);
+	printf("lm_long: %d\n", flags->lm_long);
+	printf("dyn_width: %d\n", flags->dyn_width);
+	printf("width: %d\n", flags->width);
+	printf("precision: %d\n", flags->precision);
+	printf("size: %d\n", flags->size);
 }
