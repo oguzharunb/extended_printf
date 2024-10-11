@@ -10,20 +10,20 @@ void og_fill_flag_bag(char const *to_replace, size_t size, t_flags *flags)
 	while (og_isin(FLAGS, *(to_replace + i)) && i < size)
 	{
 		if (*(to_replace + i) == FLAG_HASH)
-			flags->flag_hash = 1;
+			flags->flag_hash += 1;
 		else if (*(to_replace + i) == FLAG_MINUS)
-			flags->flag_min = 1;
+			flags->flag_min += 1;
 		else if (*(to_replace + i) == FLAG_PLUS)
-			flags->flag_plus = 1;
+			flags->flag_plus += 1;
 		else if (*(to_replace + i) == FLAG_SPACE)
-			flags->flag_space = 1;
+			flags->flag_space += 1;
 		else if (*(to_replace + i) == FLAG_ZERO)
-			flags->flag_zero = 1;
+			flags->flag_zero += 1;
 		i++;
 	}
 	if ((*(to_replace + i) == DYN_WIDTH))
 	{
-		flags->dyn_width = 1;
+		flags->dyn_width += 1;
 		i++;
 	}
 	else
@@ -38,6 +38,7 @@ void og_fill_flag_bag(char const *to_replace, size_t size, t_flags *flags)
 	if (*(to_replace + i) == PRECISION_START)
 	{
 		i++;
+		flags->precision = 0;
 		while (og_isin(NUMBERS, *(to_replace + i)) && i < size) // if dot is found
 		{
 			flags->precision = flags->precision * 10 + *(to_replace + i) - '0';
