@@ -3,12 +3,14 @@ INCLUDES = ./includes/
 SOURCE_DIR = ./srcs/
 FLAG = -Wall -Werror -Wextra
 NAME = og_printf
-SRCS = ./srcs/main.c \
-		./srcs/og_reset_flags.c \
-		./srcs/og_fill_flag_bag.c \
-		./srcs/utils.c
+SRC_DIR = ./srcs
+SRC = main.c \
+		ft_bzero.c \
+		og_fill_flag_bag.c \
+		utils.c \
+		og_length.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
 
