@@ -26,3 +26,9 @@ void	print_flags(t_flags *flags) // temporary
 	printf("precision: %d\n", flags->precision);
 	printf("size: %d\n", flags->size);
 }
+
+void	ft_reset_flags(t_flags *flags)
+{
+	ft_bzero(flags, sizeof(t_flags));
+	flags->precision = -1;
+}
