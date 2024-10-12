@@ -1,2 +1,4 @@
 .vscode/
 libft/
+og_printf
+srcs/*.o
