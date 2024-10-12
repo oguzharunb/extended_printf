@@ -5,7 +5,7 @@ FLAG = -Wall -Werror -Wextra
 NAME = og_printf
 SRC_DIR = ./srcs
 SRC = main.c \
-		ft_bzero.c \
+		og_bzero.c \
 		og_fill_flag_bag.c \
 		utils.c \
 		og_length.c
