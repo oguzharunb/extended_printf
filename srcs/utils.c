@@ -27,13 +27,13 @@ void	print_flags(t_flags *flags) // temporary
 	printf("size: %d\n", flags->size);
 }
 
-void	ft_reset_flags(t_flags *flags)
+void	og_reset_flags(t_flags *flags)
 {
-	ft_bzero(flags, sizeof(t_flags));
+	og_bzero(flags, sizeof(t_flags));
 	flags->precision = -1;
 }
 
-size_t	ft_strlen(const char *s)
+size_t	og_strlen(const char *s)
 {
 	size_t	i;
 
