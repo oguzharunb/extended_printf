@@ -40,14 +40,15 @@ typedef struct s_flags
 void	og_fill_flag_bag(char const *to_replace, size_t size, t_flags *flags);
 void	print_flags(t_flags *flags); // temporary
 int		og_isin(char const *str, char c);
-void	ft_bzero(void *s, size_t n); // temporary
-void	ft_reset_flags(t_flags *flags);
-size_t	ft_strlen(const char *s);
-size_t	ft_number_len_base(unsigned long number, size_t base);
+void	og_bzero(void *s, size_t n); // temporary
+void	og_reset_flags(t_flags *flags);
+size_t	og_strlen(const char *s);
+size_t	og_number_len_base(int number, size_t base);
 
 size_t	og_length_o(t_flags *flags, int nbr);
 size_t	og_length_d(t_flags *flags, int	nbr);
 size_t	og_length_p(t_flags *flags, void *ptr);
 size_t	og_length_c(t_flags *flags);
-size_t og_length_s(t_flags *flags, char const *str);
+size_t 	og_length_s(t_flags *flags, char const *str);
+size_t	og_length_f(t_flags *flags, float number);
 #endif
