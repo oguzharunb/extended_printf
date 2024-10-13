@@ -2,7 +2,7 @@
 #include <stdint.h>
 
 // '-' included
-size_t	og_number_len_base(int number, size_t base)
+size_t	og_number_len_base(long number, size_t base)
 {
 	size_t	len;
 	
