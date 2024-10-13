@@ -78,12 +78,13 @@ size_t	og_length_o(t_flags *flags, int nbr)
 //printf("%d\n", ((number_i & 2139095040) >> 23) - 127); // 2139095040 = 0'1111111'00000000000000000000000 // that is exponent
 size_t	og_length_f(t_flags *flags, float number) //what if dyn_width is there
 {
-	unsigned int			number_i = (unsigned int)*(unsigned int *)&number;
+	unsigned int			number_i;
 	register unsigned int	precision_wiss;
 	int						precision_len;
 	int						minus_one;
 	size_t					len;
 
+	number_i = (unsigned int)*(unsigned int *)&number;
 	minus_one = -1;
 	precision_wiss = 0;
 	while (number_i == (number_i & (minus_one << precision_wiss)))
@@ -92,5 +93,28 @@ size_t	og_length_f(t_flags *flags, float number) //what if dyn_width is there
 	if (flags->precision > precision_len)
 		precision_len = flags->precision;
 	len = precision_len + 1 + (og_number_len_base((int)number, 10)); // minus included
+	return (len);
+}
+
+size_t	og_length_e(t_flags *flags, double number)
+{
+	size_t	len;
+	
+	len = og_length_f(flags, number);	
+	len += 4;
+	return (len);
+}
+
+size_t	og_length_a(t_flags *flags, double number)
+{
+	unsigned long	number_i = (unsigned long)*(unsigned long *)&number;
+	unsigned long	minus_one;
+	size_t			len;
+	
+	len = 1;
+	minus_one = -1;
+	(void)flags;
+	while ((number_i == (number_i & (minus_one << len))))
+		len++;
 	return (len);
 }
