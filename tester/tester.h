@@ -8,5 +8,7 @@
 void	test_function(int state, char *message);
 void	run_tests(void (*f)(void), const char *function_name);
 
-void	test_length_c();
+void	test_length_s(void);
+void	test_length_c(void);
+void	test_length_f(void);
 #endif
