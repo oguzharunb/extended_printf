@@ -14,7 +14,7 @@ int	og_isin(char const *str, char c)
 	return (0);
 }
 
-void	print_flags(t_flags *flags) // temporary
+void	print_flags(t_format*flags) // temporary
 {
 	printf("flag_min: %d\n", flags->flag_min);
 	printf("flag_plus: %d\n", flags->flag_plus);
@@ -29,10 +29,11 @@ void	print_flags(t_flags *flags) // temporary
 	printf("size: %d\n", flags->size);
 }
 
-void	og_reset_flags(t_flags *flags)
+void	og_reset_flags(t_format *flags)
 {
-	ft_bzero(flags, sizeof(t_flags));
+	ft_bzero(flags, sizeof(t_format));
 	flags->precision = -1;
+	flags->base = 10;
 }
 
 size_t	og_strlen(const char *s)
