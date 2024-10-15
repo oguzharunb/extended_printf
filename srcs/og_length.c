@@ -5,7 +5,9 @@
 size_t	og_number_len_base(long number, size_t base)
 {
 	size_t	len;
-	
+
+	if (!number)
+		return (1);
 	len = 0;
 	if (number < 0)
 	{
@@ -109,19 +111,22 @@ size_t	og_length_a(t_flags *flags, double number)
 {
 	unsigned long	number_i = (unsigned long)*(unsigned long *)&number;
 	unsigned long	exponent;
-	unsigned long	precision;
 	unsigned long	minus_one;
-	size_t			wiss;
+	unsigned long	wiss;
+	size_t			len;
 
 	minus_one = -1;
-	exponent = ((DOUBLE_EXPONENT_MASK & number_i) >> 52) - 1023;
-	precision = (DOUBLE_PRECISION_MASK & number_i);
+	exponent = (((DOUBLE_EXPONENT_MASK & number_i) >> 52));
+	if (exponent)
+		exponent -= 1023;
 	wiss = 0;
-	while (precision == (precision & (minus_one << wiss)) && wiss < 52)
+	while ((DOUBLE_PRECISION_MASK & number_i) == ((DOUBLE_PRECISION_MASK & number_i) & (minus_one << (wiss + 4))) && wiss < 52)
 		wiss += 4;
-	wiss = (56 - wiss) / 4;
-	(void)flags;
-	(void)precision;
-	(void)exponent;
-	return (wiss);
+	wiss = (52 - wiss) / 4;
+	if ((int)wiss < flags->precision)
+		wiss = flags->precision;
+	len = wiss + og_number_len_base(exponent, 10) + 5;
+	if (wiss)
+		len++;
+	return (len);
 }
