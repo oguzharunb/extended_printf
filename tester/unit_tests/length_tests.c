@@ -2,6 +2,7 @@
 #include "../../libft/libft.h"
 #include "../tester.h"
 
+#include <stdio.h>
 void	test_length_c()
 {
 	char	flag_str[100];
@@ -54,4 +55,26 @@ void	test_length_f()
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_f(&flags, 12.25) == 4, "Test 2: precision limited");
 
+}
+
+void	test_length_d()
+{
+	char		flag_str[100];
+	t_format	flags;
+
+	og_reset_flags(&flags);
+	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_d(&flags, 12) == 2, "Test 1: no flags");
+
+	og_reset_flags(&flags);
+	ft_strlcpy(flag_str, "l", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_d(&flags, 21474836471) == 11, "Test 2: long with 'l'");
+
+	og_reset_flags(&flags);
+	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_d(&flags, 21474836471) == 4294967287, "Test 3: long without 'l'");
+	printf("%li\n", og_length_d(&flags, 21474836471));
 }
