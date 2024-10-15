@@ -89,7 +89,7 @@ size_t	og_length_f(t_flags *flags, float number) //what if dyn_width is there
 	precision_wiss = 0;
 	while (number_i == (number_i & (minus_one << precision_wiss)))
 		precision_wiss++;
-	precision_len = 24 - precision_wiss - (int)(((number_i & 2139095040) >> 23) - 127); // (int)(((number_i & 2139095040) >> 23) - 127) is exponent
+	precision_len = 24 - precision_wiss - (int)(((number_i & FLOAT_EXPONENT_MASK) >> 23) - 127); // (int)(((number_i & 2139095040) >> 23) - 127) is exponent
 	if (flags->precision > precision_len)
 		precision_len = flags->precision;
 	len = precision_len + 1 + (og_number_len_base((int)number, 10)); // minus included
@@ -108,13 +108,20 @@ size_t	og_length_e(t_flags *flags, double number)
 size_t	og_length_a(t_flags *flags, double number)
 {
 	unsigned long	number_i = (unsigned long)*(unsigned long *)&number;
+	unsigned long	exponent;
+	unsigned long	precision;
 	unsigned long	minus_one;
-	size_t			len;
-	
-	len = 1;
+	size_t			wiss;
+
 	minus_one = -1;
+	exponent = ((DOUBLE_EXPONENT_MASK & number_i) >> 52) - 1023;
+	precision = (DOUBLE_PRECISION_MASK & number_i);
+	wiss = 0;
+	while (precision == (precision & (minus_one << wiss)) && wiss < 52)
+		wiss += 4;
+	wiss = (56 - wiss) / 4;
 	(void)flags;
-	while ((number_i == (number_i & (minus_one << len))))
-		len++;
-	return (len);
+	(void)precision;
+	(void)exponent;
+	return (wiss);
 }
