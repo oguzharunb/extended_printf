@@ -92,7 +92,7 @@ size_t	og_length_f(t_flags *flags, float number) //what if dyn_width is there
 	while (number_i == (number_i & (minus_one << precision_wiss)))
 		precision_wiss++;
 	precision_len = 24 - precision_wiss - (int)(((number_i & FLOAT_EXPONENT_MASK) >> 23) - 127); // (int)(((number_i & 2139095040) >> 23) - 127) is exponent
-	if (flags->precision > precision_len)
+	if (flags->precision < precision_len && flags->precision != -1)
 		precision_len = flags->precision;
 	len = precision_len + 1 + (og_number_len_base((int)number, 10)); // minus included
 	return (len);
