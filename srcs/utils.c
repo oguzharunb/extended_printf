@@ -29,7 +29,7 @@ void	print_flags(t_format*flags) // temporary
 	printf("size: %d\n", flags->size);
 }
 
-void	og_reset_flags(t_format *flags)
+void	reset_flags(t_format *flags)
 {
 	ft_bzero(flags, sizeof(t_format));
 	flags->precision = -1;
