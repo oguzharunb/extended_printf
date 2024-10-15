@@ -11,4 +11,5 @@ void	run_tests(void (*f)(void), const char *function_name);
 void	test_length_s(void);
 void	test_length_c(void);
 void	test_length_f(void);
+void	test_length_integer(void);
 #endif
