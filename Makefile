@@ -5,8 +5,7 @@ FLAG = -Wall -Werror -Wextra
 NAME = og_printf.a
 LIBFT = ./libft/libft.a
 SRC_DIR = ./srcs
-SRC =	og_bzero.c \
-		og_fill_flag_bag.c \
+SRC =	og_fill_flag_bag.c \
 		utils.c \
 		og_length.c
 
