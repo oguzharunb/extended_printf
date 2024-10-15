@@ -13,7 +13,7 @@ void	test_function(int state, char *message)
 
 void	run_tests(void (*f)(void), const char *function_name)
 {
-	printf("Running tests for %s\n", function_name);
+	printf("\nRunning tests for %s\n", function_name);
 	printf("-----------------\n");
 	f();
 	printf("-----------------\n");
