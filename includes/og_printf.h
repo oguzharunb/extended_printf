@@ -49,8 +49,7 @@ void	og_reset_flags(t_format*flags);
 size_t	og_strlen(const char *s);
 size_t	og_number_len_base(long number, size_t base);
 
-size_t	og_length_o(t_format*flags, int nbr);
-size_t	og_length_d(t_format*flags, long nbr);
+size_t	og_length_integer(t_format*flags, long nbr);
 size_t	og_length_p(t_format*flags, void *ptr);
 size_t	og_length_c(t_format*flags);
 size_t 	og_length_s(t_format*flags, char const *str);
