@@ -45,7 +45,7 @@ typedef struct s_format
 void	og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags);
 void	print_flags(t_format*flags); // temporary
 int		og_isin(char const *str, char c);
-void	og_reset_flags(t_format*flags);
+void	reset_flags(t_format*flags);
 size_t	og_strlen(const char *s);
 size_t	og_number_len_base(long number, size_t base);
 
