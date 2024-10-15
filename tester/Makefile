@@ -9,7 +9,7 @@ LIBFT = ../libft/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(HEADER)
+$(NAME): $(OBJECTS) $(HEADER) $(LIB) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIB) $(LIBFT)
 
 clean:
