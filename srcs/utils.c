@@ -1,4 +1,6 @@
 #include "../includes/og_printf.h"
+#include "../libft/libft.h"
+
 #include <stdio.h> // temporary
 
 int	og_isin(char const *str, char c)
@@ -29,7 +31,7 @@ void	print_flags(t_flags *flags) // temporary
 
 void	og_reset_flags(t_flags *flags)
 {
-	og_bzero(flags, sizeof(t_flags));
+	ft_bzero(flags, sizeof(t_flags));
 	flags->precision = -1;
 }
 
