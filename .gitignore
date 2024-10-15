@@ -1,6 +1,7 @@
 .vscode/
 libft/
 og_printf
-srcs/*.o
+*.o
 a.out
 og_printf.a
+tester/tester
