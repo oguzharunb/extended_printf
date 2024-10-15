@@ -6,14 +6,14 @@
 void	test_length_c()
 {
 	char	flag_str[100];
-	t_flags	flags;
+	t_format	flags;
 	//size_t	ret_size_t;
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "4", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_c(&flags) == 4, "Test 1: just width");
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "-4", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_c(&flags) == 4, "Test 2: width and minus");
@@ -22,19 +22,19 @@ void	test_length_c()
 void	test_length_s()
 {
 	char	flag_str[100];
-	t_flags	flags;
+	t_format	flags;
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "4", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_s(&flags, "hello") == 5, "Test 1: len over width");
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, ".4", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_s(&flags, "hello") == 4, "Test 2: precision over len");
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "7.4", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_s(&flags, "hello") == 7, "Test 3: width over precision over len");
@@ -43,38 +43,37 @@ void	test_length_s()
 void	test_length_f()
 {
 	char	flag_str[100];
-	t_flags	flags;
+	t_format	flags;
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_f(&flags, 12.25) == 5, "Test 1: no flags");
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, ".1", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_f(&flags, 12.25) == 4, "Test 2: precision limited");
 
 }
 
-void	test_length_d()
+void	test_length_integer()
 {
 	char		flag_str[100];
 	t_format	flags;
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_d(&flags, 12) == 2, "Test 1: no flags");
+	test_function(og_length_integer(&flags, 12) == 2, "Test 1: no flags");
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "l", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_d(&flags, 21474836471) == 11, "Test 2: long with 'l'");
+	test_function(og_length_integer(&flags, 21474836471) == 11, "Test 2: long with 'l'");
 
-	og_reset_flags(&flags);
+	reset_flags(&flags);
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_d(&flags, 21474836471) == 4294967287, "Test 3: long without 'l'");
-	printf("%li\n", og_length_d(&flags, 21474836471));
+	test_function(og_length_integer(&flags, 21474836471) == 2, "Test 3: long without 'l'");
 }
