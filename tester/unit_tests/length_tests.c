@@ -76,4 +76,10 @@ void	test_length_integer()
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_integer(&flags, 21474836471) == 2, "Test 3: long without 'l'");
+
+	reset_flags(&flags);
+	ft_strlcpy(flag_str, "u", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_integer(&flags, -1) == 10, "Test 4: unsigned int");
+	//printf("%u\n", -1);
 }
