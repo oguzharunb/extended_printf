@@ -1,5 +1,4 @@
 #include "../includes/og_printf.h"
-#include <stdint.h>
 
 // '-' included
 size_t	og_number_len_base(long number, size_t base)
@@ -22,7 +21,18 @@ size_t	og_number_len_base(long number, size_t base)
 	return (len);
 }
 
-size_t og_length_s(t_flags *flags, char const *str)
+long	cast_number(t_format*flags, long nbr)
+{
+	if (flags->lm_long == 0)
+		nbr = (int)nbr;
+	else if (flags->lm_short == 1)
+		nbr = (short)nbr;
+	if (flags->conversion == 'u')
+		nbr = (unsigned long)nbr;
+	return (nbr);
+}
+
+size_t	og_length_s(t_format*flags, char const *str)
 {
 	int	len;
 
@@ -34,14 +44,14 @@ size_t og_length_s(t_flags *flags, char const *str)
 	return ((size_t)len);
 }
 
-size_t	og_length_c(t_flags *flags)
+size_t	og_length_c(t_format*flags)
 {
 	if (flags->width)
 		return (flags->width);
 	return (1);
 }
 
-size_t	og_length_p(t_flags *flags, void *ptr)
+size_t	og_length_p(t_format*flags, void *ptr)
 {
 	size_t		len;
 
@@ -51,11 +61,13 @@ size_t	og_length_p(t_flags *flags, void *ptr)
 	return (len);
 }
 
-size_t	og_length_d(t_flags *flags, int	nbr)
+size_t	og_length_integer(t_format*flags, long nbr)
 {
-	int	len;
-
-	len = og_number_len_base(nbr, 10);
+	int		len;
+	nbr = cast_number(flags, nbr);
+	if (flags)
+		
+	len = og_number_len_base(nbr, flags->base);
 	if (len > flags->width && len > flags->precision)
 		return (len);
 	if (flags->width > flags->precision)
@@ -63,7 +75,7 @@ size_t	og_length_d(t_flags *flags, int	nbr)
 	return (flags->precision);
 }
 
-size_t	og_length_o(t_flags *flags, int nbr)
+size_t	og_length_o(t_format*flags, int nbr)
 {
 	int	len;
 
@@ -78,7 +90,7 @@ size_t	og_length_o(t_flags *flags, int nbr)
 }
 
 //printf("%d\n", ((number_i & 2139095040) >> 23) - 127); // 2139095040 = 0'1111111'00000000000000000000000 // that is exponent
-size_t	og_length_f(t_flags *flags, float number) //what if dyn_width is there
+size_t	og_length_f(t_format*flags, float number) //what if dyn_width is there
 {
 	unsigned int			number_i;
 	register unsigned int	precision_wiss;
@@ -98,7 +110,7 @@ size_t	og_length_f(t_flags *flags, float number) //what if dyn_width is there
 	return (len);
 }
 
-size_t	og_length_e(t_flags *flags, double number)
+size_t	og_length_e(t_format*flags, double number)
 {
 	size_t	len;
 	
@@ -107,7 +119,7 @@ size_t	og_length_e(t_flags *flags, double number)
 	return (len);
 }
 
-size_t	og_length_a(t_flags *flags, double number)
+size_t	og_length_a(t_format*flags, double number)
 {
 	unsigned long	number_i = (unsigned long)*(unsigned long *)&number;
 	unsigned long	exponent;
