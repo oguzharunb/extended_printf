@@ -21,7 +21,7 @@ size_t	og_number_len_base(long number, size_t base)
 	return (len);
 }
 
-long	cast_number(t_format*flags, long nbr)
+long	cast_number(t_format *flags, long nbr)
 {
 	if (flags->lm_long == 0)
 		nbr = (int)nbr;
@@ -30,6 +30,16 @@ long	cast_number(t_format*flags, long nbr)
 	if (flags->conversion == 'u')
 		nbr = (unsigned long)nbr;
 	return (nbr);
+}
+
+void	set_base(t_format *flags)
+{
+	if (flags->conversion == 'x')
+		flags->base = 16;
+	else if (flags->conversion == 'o')
+		flags->base = 8;
+	else if (flags->conversion == 'b')
+		flags->base = 2;
 }
 
 size_t	og_length_s(t_format*flags, char const *str)
@@ -65,8 +75,7 @@ size_t	og_length_integer(t_format*flags, long nbr)
 {
 	int		len;
 	nbr = cast_number(flags, nbr);
-	if (flags)
-		
+	set_base(flags);
 	len = og_number_len_base(nbr, flags->base);
 	if (len > flags->width && len > flags->precision)
 		return (len);
