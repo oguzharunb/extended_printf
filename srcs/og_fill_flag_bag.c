@@ -46,12 +46,16 @@ void og_fill_flag_bag(char const *to_replace, size_t size, t_flags *flags)
 		}
 	}
 
-	while (og_isin(LENGTH_MODIFIER, *(to_replace + i)) && i < size)
+	if (*(to_replace + i) == LM_SHORT)
 	{
-		if (*(to_replace + i) == LM_SHORT)
-			flags->lm_short = flags->lm_short + 1;
-		else if (*(to_replace + i) == LM_LONG)
-			flags->lm_long = flags->lm_long + 1;
-		i++;
+		flags->lm_short += 1;
+		if (*(to_replace + (++i)) == LM_SHORT)
+			flags->lm_short += 1;
+	}
+	else if (*(to_replace + i) == LM_LONG)
+	{
+		flags->lm_long = flags->lm_long + 1;
+		if (*(to_replace + (++i)) == LM_LONG)
+			flags->lm_long += 1;
 	}
 }
