@@ -43,7 +43,6 @@ typedef struct s_flags
 void	og_fill_flag_bag(char const *to_replace, size_t size, t_flags *flags);
 void	print_flags(t_flags *flags); // temporary
 int		og_isin(char const *str, char c);
-void	og_bzero(void *s, size_t n); // temporary
 void	og_reset_flags(t_flags *flags);
 size_t	og_strlen(const char *s);
 size_t	og_number_len_base(long number, size_t base);
