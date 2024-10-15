@@ -1,2 +1,2 @@
 # og_printf
-Better Than printf
+better than printf
