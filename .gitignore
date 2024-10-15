@@ -2,3 +2,5 @@
 libft/
 og_printf
 srcs/*.o
+a.out
+og_printf.a
