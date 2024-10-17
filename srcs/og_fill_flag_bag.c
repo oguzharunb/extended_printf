@@ -51,11 +51,19 @@ void og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 		flags->lm_short += 1;
 		if (*(to_replace + (++i)) == LM_SHORT)
 			flags->lm_short += 1;
+		i++;
 	}
 	else if (*(to_replace + i) == LM_LONG)
 	{
 		flags->lm_long = flags->lm_long + 1;
 		if (*(to_replace + (++i)) == LM_LONG)
 			flags->lm_long += 1;
+		i++;
+	}
+
+	if (og_isin(CONVERSIONS, *(to_replace + i)))
+	{
+		flags->conversion = *(to_replace + i);
+		i++;
 	}
 }
