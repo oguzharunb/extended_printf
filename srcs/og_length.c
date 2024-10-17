@@ -157,6 +157,8 @@ size_t	og_length_f(t_format*flags, float number) //what if dyn_width is there
 	if (flags->precision < precision_len && flags->precision != -1)
 		precision_len = flags->precision;
 	len = precision_len + 1 + (og_number_len_base((int)number, 10)); // minus included
+	if (flags->width > (int)len)
+		return (flags->width);
 	return (len);
 }
 
