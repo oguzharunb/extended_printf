@@ -16,7 +16,22 @@ size_t	og_number_len_base(long number, size_t base)
 	while(number)
 	{
 		len++;
-		number /= base;
+		number /= base;      
+	}
+	return (len);
+}
+
+size_t	og_unumber_len_base(unsigned long number, size_t base)
+{
+	size_t	len;
+
+	if (!number)
+		return (1);
+	len = 0;
+	while(number)
+	{
+		len++;
+		number /= base;      
 	}
 	return (len);
 }
@@ -27,8 +42,19 @@ long	cast_number(t_format *flags, long nbr)
 		nbr = (int)nbr;
 	else if (flags->lm_short == 1)
 		nbr = (short)nbr;
-	if (flags->conversion == 'u')
-		nbr = (unsigned long)nbr;
+	else if (flags->lm_short == 2)
+		nbr = (char)nbr;
+	return (nbr);
+}
+
+unsigned long	cast_unumber(t_format *flags, unsigned long nbr)
+{
+	if (flags->lm_long == 0)
+		nbr = (unsigned int)nbr;
+	else if (flags->lm_short == 1)
+		nbr = (unsigned short)nbr;
+	else if (flags->lm_short == 2)
+		nbr = (unsigned char)nbr;
 	return (nbr);
 }
 
@@ -71,12 +97,27 @@ size_t	og_length_p(t_format*flags, void *ptr)
 	return (len);
 }
 
-size_t	og_length_integer(t_format*flags, long nbr)
+size_t	og_length_i(t_format*flags, long nbr)
 {
 	int		len;
+
 	nbr = cast_number(flags, nbr);
-	set_base(flags);
 	len = og_number_len_base(nbr, flags->base);
+	if (len > flags->width && len > flags->precision)
+		return (len);
+	if (flags->width > flags->precision)
+		return (flags->width);
+	return (flags->precision);
+}
+
+size_t	og_length_u(t_format *flags, unsigned long nbr)
+{
+	int	len;
+
+	len = 0;
+	set_base(flags);
+	nbr = cast_unumber(flags, nbr);
+	len = og_unumber_len_base(nbr, flags->base);
 	if (len > flags->width && len > flags->precision)
 		return (len);
 	if (flags->width > flags->precision)
