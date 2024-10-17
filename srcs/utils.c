@@ -27,6 +27,7 @@ void	print_flags(t_format*flags) // temporary
 	printf("width: %d\n", flags->width);
 	printf("precision: %d\n", flags->precision);
 	printf("size: %d\n", flags->size);
+	printf("conversion: %c\n", flags->conversion);
 }
 
 void	reset_flags(t_format *flags)
