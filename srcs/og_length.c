@@ -51,7 +51,7 @@ unsigned long	cast_unumber(t_format *flags, unsigned long nbr)
 {
 	if (flags->lm_long == 0)
 		nbr = (unsigned int)nbr;
-	else if (flags->lm_short == 1)
+	if (flags->lm_short == 1)
 		nbr = (unsigned short)nbr;
 	else if (flags->lm_short == 2)
 		nbr = (unsigned char)nbr;
