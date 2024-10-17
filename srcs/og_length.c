@@ -40,7 +40,7 @@ long	cast_number(t_format *flags, long nbr)
 {
 	if (flags->lm_long == 0)
 		nbr = (int)nbr;
-	else if (flags->lm_short == 1)
+	if (flags->lm_short == 1)
 		nbr = (short)nbr;
 	else if (flags->lm_short == 2)
 		nbr = (char)nbr;
