@@ -57,7 +57,7 @@ void	test_length_f()
 
 }
 
-void	test_length_integer()
+void	test_length_i()
 {
 	char		flag_str[100];
 	t_format	flags;
@@ -65,21 +65,36 @@ void	test_length_integer()
 	reset_flags(&flags);
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_integer(&flags, 12) == 2, "Test 1: no flags");
+	test_function(og_length_i(&flags, 12) == 2, "Test 1: no flags");
 
 	reset_flags(&flags);
 	ft_strlcpy(flag_str, "l", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_integer(&flags, 21474836471) == 11, "Test 2: long with 'l'");
+	test_function(og_length_i(&flags, 21474836471) == 11, "Test 2: long with 'l'");
 
 	reset_flags(&flags);
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_integer(&flags, 21474836471) == 2, "Test 3: long without 'l'");
+	test_function(og_length_i(&flags, 21474836471) == 2, "Test 3: long without 'l'");
+
+	reset_flags(&flags);
+	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_i(&flags, -1) == 2, "Test 4: minus int");
+}
+
+void	test_length_u(void)
+{
+	char		flag_str[100];
+	t_format	flags;
+
+	reset_flags(&flags);
+	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_u(&flags, 12) == 2, "Test 1: no flag, no edge case");
 
 	reset_flags(&flags);
 	ft_strlcpy(flag_str, "u", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_integer(&flags, -1) == 10, "Test 4: unsigned int");
-	//printf("%u\n", -1);
+	test_function(og_length_u(&flags, -1) == 10, "Test 2: minus assigned");
 }
