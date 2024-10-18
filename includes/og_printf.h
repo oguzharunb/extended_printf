@@ -60,4 +60,5 @@ size_t 	og_length_s(t_format*flags, char const *str);
 size_t	og_length_f(t_format*flags, float number);
 size_t	og_length_e(t_format*flags, double number);
 size_t	og_length_a(t_format*flags, double number);
+size_t	og_length_b(t_format *flags);
 #endif
