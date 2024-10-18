@@ -1,4 +1,30 @@
 #include "../includes/og_printf.h"
+#include <stdarg.h>
+# 
+
+size_t			og_length_a(t_format*flags, double number);
+size_t			og_length_e(t_format*flags, double number);
+size_t			og_length_f(t_format*flags, float number);
+size_t			og_length_o(t_format*flags, int nbr);
+size_t			og_length_u(t_format *flags, unsigned long nbr);
+size_t			og_length_i(t_format*flags, long nbr);
+size_t			og_length_p(t_format*flags, void *ptr);
+size_t			og_length_c(t_format*flags);
+size_t			og_length_s(t_format*flags, char const *str);
+void			set_base(t_format *flags);
+unsigned long	cast_unumber(t_format *flags, unsigned long nbr);
+long			cast_number(t_format *flags, long nbr);
+size_t			og_unumber_len_base(unsigned long number, size_t base);
+size_t			og_number_len_base(long number, size_t base);
+
+//gives the actual length of the string
+//size_t	lengthf(char const *string, va_list *args)
+//{
+//	size_t	len;
+//
+//	len = 0;
+//
+//}
 
 // '-' included
 size_t	og_number_len_base(long number, size_t base)
@@ -140,6 +166,7 @@ size_t	og_length_o(t_format*flags, int nbr)
 }
 
 //printf("%d\n", ((number_i & 2139095040) >> 23) - 127); // 2139095040 = 0'1111111'00000000000000000000000 // that is exponent
+
 size_t	og_length_f(t_format*flags, float number) //what if dyn_width is there
 {
 	unsigned int			number_i;
@@ -193,4 +220,12 @@ size_t	og_length_a(t_format*flags, double number)
 	if (wiss)
 		len++;
 	return (len);
+}
+
+size_t	og_length_b(t_format *flags)
+{
+	if (flags->width < 2)
+		return (8);
+	else
+		return (((flags->width - 1) * 9) + 8);
 }
