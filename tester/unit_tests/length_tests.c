@@ -128,7 +128,7 @@ void	test_length_u(void)
 	t_format	flags;
 
 	reset_flags(&flags);
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	ft_strlcpy(flag_str, "u", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, 12) == 2, "Test 1: no flag, no edge case");
 
@@ -151,4 +151,25 @@ void	test_length_u(void)
 	ft_strlcpy(flag_str, "lu", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, -257) == 20, "Test 5: flag l with casting");
+}
+
+void	test_length_b(void)
+{
+	char		flag_str[100];
+	t_format	flags;
+
+	reset_flags(&flags);
+	ft_strlcpy(flag_str, "b", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_b(&flags) == 8, "Test 1: 1 byte test, no edge case");
+
+	reset_flags(&flags);
+	ft_strlcpy(flag_str, "2b", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_b(&flags) == 17, "Test 2: 2 byte test, no edge case");
+
+	reset_flags(&flags);
+	ft_strlcpy(flag_str, "3b", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_b(&flags) == 26, "Test 3: 3 byte test, no edge case");
 }
