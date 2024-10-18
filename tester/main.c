@@ -9,4 +9,5 @@ int main(void)
 	run_tests(test_length_f, "test_length_f");
 	run_tests(test_length_i, "test_length_i");
 	run_tests(test_length_u, "test_length_u");
+	run_tests(test_length_b, "test_length_b");
 }
