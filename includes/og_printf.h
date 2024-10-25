@@ -25,6 +25,7 @@
 # define FLOAT_EXPONENT_MASK	0b1111111100000000000000000000000//2139095040
 # define MASK_64_TO_32	0b0000000000000000000000000000000011111111111111111111111111111111 //4294967295
 # include <stddef.h>
+# include <stdarg.h>
 
 typedef struct s_format
 {
@@ -43,22 +44,30 @@ typedef struct s_format
 	char	conversion;
 } t_format;
 
-void	og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags);
-void	print_flags(t_format*flags); // temporary
-int		og_isin(char const *str, char c);
-void	reset_flags(t_format*flags);
-size_t	og_strlen(const char *s);
+void			og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags);
+void			print_flags(t_format*flags); // temporary
+int				og_isin(char const *str, char c);
+void			reset_flags(t_format*flags);
+void			set_base(t_format *flags);
+unsigned long	cast_unumber(t_format *flags, unsigned long nbr);
+long			cast_number(t_format *flags, long nbr);
+size_t			og_unumber_len_base(unsigned long number, size_t base);
+size_t			og_number_len_base(long number, size_t base);
 
-size_t	og_number_len_base(long number, size_t base);
-size_t	og_unumber_len_base(unsigned long number, size_t base);
+size_t			og_length_a(t_format*flags, double number);
+size_t			og_length_e(t_format*flags, double number);
+size_t			og_length_f(t_format*flags, float number);
+size_t			og_length_o(t_format*flags, int nbr);
+size_t			og_length_u(t_format *flags, unsigned long nbr);
+size_t			og_length_i(t_format*flags, long nbr);
+size_t			og_length_p(t_format*flags, void *ptr);
+size_t			og_length_c(t_format*flags);
+size_t			og_length_s(t_format*flags, char const *str);
+size_t			og_length_b(t_format*flags);
 
-size_t	og_length_i(t_format*flags, long nbr);
-size_t	og_length_u(t_format*flags, unsigned long nbr);
-size_t	og_length_p(t_format*flags, void *ptr);
-size_t	og_length_c(t_format*flags);
-size_t 	og_length_s(t_format*flags, char const *str);
-size_t	og_length_f(t_format*flags, float number);
-size_t	og_length_e(t_format*flags, double number);
-size_t	og_length_a(t_format*flags, double number);
-size_t	og_length_b(t_format *flags);
+size_t			decoder(t_format *flags, va_list *args);
+size_t			lengthf(char const *string, va_list *args);
+int				flag_check(t_format *flags, size_t size);
+
+int				og_printf(const char *string, ...);
 #endif
