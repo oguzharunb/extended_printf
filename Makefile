@@ -5,9 +5,11 @@ FLAG = -Wall -Werror -Wextra
 NAME = og_printf.a
 LIBFT = ./libft/libft.a
 SRC_DIR = ./srcs
-SRC =	og_fill_flag_bag.c \
+SRC =	og_unit_length1.c \
+		og_fill_flag_bag.c \
 		utils.c \
-		og_length.c
+		og_length.c \
+		og_printf.c
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
