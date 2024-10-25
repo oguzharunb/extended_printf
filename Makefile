@@ -9,7 +9,8 @@ SRC =	og_unit_length1.c \
 		og_fill_flag_bag.c \
 		utils.c \
 		og_length.c \
-		og_printf.c
+		og_printf.c \
+		flag_check.c
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
