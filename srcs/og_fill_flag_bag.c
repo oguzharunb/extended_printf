@@ -7,6 +7,9 @@ void og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 	size_t	i;
 
 	i = 0;
+	reset_flags(flags);
+	if (*(to_replace + i) == '%')
+		i++;
 	while (og_isin(FLAGS, *(to_replace + i)) && i < size)
 	{
 		if (*(to_replace + i) == FLAG_HASH)
