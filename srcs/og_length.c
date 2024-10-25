@@ -3,6 +3,7 @@
 #include "../libft/libft.h"
 
 //gives the actual length of the string
+//gives the actual length of the string
 size_t	lengthf(char const *string, va_list *args)
 {
 	size_t		len;
@@ -14,24 +15,30 @@ size_t	lengthf(char const *string, va_list *args)
 	i = 0;
 	while (string[i])
 	{
-		j = 1;
-		while (!og_isin(CONVERSIONS, string[i + j]))
-			j++;
-		og_fill_flag_bag(string + i, j, &flags);
-		if (flag_check(&flags, j))
+		j = 0;
+		if ('%' == string[i])
 		{
-			len += decoder(&flags, args);
-			i += j;
+			j++;
+			while (!og_isin(CONVERSIONS, string[i + j]) && string[i + j])
+				j++;
+			og_fill_flag_bag(string + i, j, &flags);
+			if (flag_check(&flags, j))
+			{
+				len++;
+				j++;
+			}
+			else
+				len += decoder(&flags, args) - 1; // '%' excluded
 		}
 		else
 		{
 			len++;
-			i++;
+			j++;
 		}
+		i += j;
 	}
 	return (len);
 }
-
 size_t	decoder(t_format *flags, va_list *args)
 {
 	if ('a' == flags->conversion)
