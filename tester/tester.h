@@ -14,4 +14,7 @@ void	test_length_f(void);
 void	test_length_i(void);
 void	test_length_u(void);
 void	test_length_b(void);
+
+void	test_flag_check(void);
+void	test_length_total(void);
 #endif
