@@ -37,12 +37,71 @@ void	reset_flags(t_format *flags)
 	flags->base = 10;
 }
 
-size_t	og_strlen(const char *s)
+// '-' included
+size_t	og_number_len_base(long number, size_t base)
 {
-	size_t	i;
+	size_t	len;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!number)
+		return (1);
+	len = 0;
+	if (number < 0)
+	{
+		len++;
+		number = -number;
+	}
+	while(number)
+	{
+		len++;
+		number /= base;      
+	}
+	return (len);
 }
+
+size_t	og_unumber_len_base(unsigned long number, size_t base)
+{
+	size_t	len;
+
+	if (!number)
+		return (1);
+	len = 0;
+	while(number)
+	{
+		len++;
+		number /= base;      
+	}
+	return (len);
+}
+
+long	cast_number(t_format *flags, long nbr)
+{
+	if (flags->lm_long == 0)
+		nbr = (int)nbr;
+	if (flags->lm_short == 1)
+		nbr = (short)nbr;
+	else if (flags->lm_short == 2)
+		nbr = (char)nbr;
+	return (nbr);
+}
+
+unsigned long	cast_unumber(t_format *flags, unsigned long nbr)
+{
+	if (flags->lm_long == 0)
+		nbr = (unsigned int)nbr;
+	if (flags->lm_short == 1)
+		nbr = (unsigned short)nbr;
+	else if (flags->lm_short == 2)
+		nbr = (unsigned char)nbr;
+	return (nbr);
+}
+
+void	set_base(t_format *flags)
+{
+	if (flags->conversion == 'x')
+		flags->base = 16;
+	else if (flags->conversion == 'o')
+		flags->base = 8;
+	else if (flags->conversion == 'b')
+		flags->base = 2;
+}
+
