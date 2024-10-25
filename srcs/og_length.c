@@ -14,23 +14,20 @@ size_t	lengthf(char const *string, va_list *args)
 	i = 0;
 	while (string[i])
 	{
-		j = 0;
-		if ('%' == string[i + j])
+		j = 1;
+		while (!og_isin(CONVERSIONS, string[i + j]))
+			j++;
+		og_fill_flag_bag(string + i, j, &flags);
+		if (flag_check(&flags, j))
 		{
-			i++;
-			while (!og_isin(CONVERSIONS, string[i + j]))
-				j++;
-			og_fill_flag_bag(string + i, j, &flags);
-			if (!flag_check(&flags, j))
-				continue;
-			len += decoder(&flags, args) - 1; // '%' excluded
+			len += decoder(&flags, args);
+			i += j;
 		}
 		else
 		{
 			len++;
-			j++;
+			i++;
 		}
-		i += j;
 	}
 	return (len);
 }
@@ -42,7 +39,7 @@ size_t	decoder(t_format *flags, va_list *args)
 	else if ('b' == flags->conversion)
 		return (og_length_b(flags));
 	else if ('c' == flags->conversion)
-		return (og_length_b(flags));
+		return (og_length_c(flags));
 	else if (og_isin("di", flags->conversion))
 		return (og_length_i(flags, va_arg(*args, long)));
 	else if ('e' == flags->conversion)
