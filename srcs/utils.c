@@ -16,6 +16,7 @@ int	og_isin(char const *str, char c)
 
 void	print_flags(t_format*flags) // temporary
 {
+	printf("----------------\n");
 	printf("flag_min: %d\n", flags->flag_min);
 	printf("flag_plus: %d\n", flags->flag_plus);
 	printf("flag_space: %d\n", flags->flag_space);
@@ -28,6 +29,7 @@ void	print_flags(t_format*flags) // temporary
 	printf("precision: %d\n", flags->precision);
 	printf("size: %d\n", flags->size);
 	printf("conversion: %c\n", flags->conversion);
+	printf("----------------\n");
 }
 
 void	reset_flags(t_format *flags)
@@ -58,7 +60,7 @@ size_t	og_number_len_base(long number, size_t base)
 	return (len);
 }
 
-size_t	og_unumber_len_base(unsigned long number, size_t base)
+size_t		og_unumber_len_base(unsigned long number, size_t base)
 {
 	size_t	len;
 
