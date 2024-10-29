@@ -4,10 +4,11 @@
 
 //gives the actual length of the string
 //gives the actual length of the string
+
 size_t	lengthf(char const *string, va_list *args)
 {
-	size_t		len;
 	size_t		i;
+	size_t		len;
 	size_t		j;
 	t_format	flags;
 
@@ -15,32 +16,26 @@ size_t	lengthf(char const *string, va_list *args)
 	i = 0;
 	while (string[i])
 	{
-		j = 0;
-		if ('%' == string[i])
-		{
-			j++;
-			while (!og_isin(CONVERSIONS, string[i + j]) && string[i + j])
-				j++;
-			og_fill_flag_bag(string + i, j, &flags);
-			if (flag_check(&flags, j))
-			{
-				len++;
-				j++;
-			}
-			else
-				len += decoder(&flags, args) - 1; // '%' excluded
-		}
-		else
+		if (string[i] != '%')
 		{
 			len++;
-			j++;
+			i++;
+			continue ;
 		}
-		i += j;
+		j = 1;
+		while (!ft_isin(string[i + j], CONVERSIONS) && string[i + j])
+			j++;
+		reset_flags(&flags);
+		og_fill_flag_bag(string + i, j + 1, &flags);
+		if (!flag_check(&flags, j + 1))
+						
+		i++;
 	}
-	return (len);
+	(void)args;
+	return (1);
 }
 size_t	decoder(t_format *flags, va_list *args)
-{
+{ 
 	if ('a' == flags->conversion)
 		return (og_length_a(flags, va_arg(*args, double)));
 	else if ('b' == flags->conversion)
@@ -53,12 +48,14 @@ size_t	decoder(t_format *flags, va_list *args)
 		return (og_length_e(flags, va_arg(*args, double)));
 	else if ('f' == flags->conversion)
 		return (og_length_f(flags, va_arg(*args, double)));
-	else if (og_isin("uox", flags->conversion))
+	else if (og_isin("uoxX", flags->conversion))
 		return (og_length_u(flags, va_arg(*args, unsigned long)));
 	else if ('s' == flags->conversion)
 		return (og_length_s(flags, va_arg(*args, const char *)));
 	else if ('p' == flags->conversion)
 		return (og_length_p(flags, va_arg(*args, void *)));
+	else if ('%' == flags->conversion)
+		return (1);
 	return (0);
 }
 
