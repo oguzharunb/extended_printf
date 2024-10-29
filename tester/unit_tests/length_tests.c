@@ -113,23 +113,23 @@ void	test_length_u(void)
 	char		flag_str[100];
 	t_format	flags;
 
-	ft_strlcpy(flag_str, "u", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%u", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, 12) == 2, "Test 1: no flag, no edge case");
 
-	ft_strlcpy(flag_str, "u", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%u", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, -1) == 10, "Test 2: minus assigned");
 
-	ft_strlcpy(flag_str, "hhu", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%hhu", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, -1) == 3, "Test 3: flag hh");
 
-	ft_strlcpy(flag_str, "llu", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%llu", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, -257) == 20, "Test 4: flag ll with casting");
 
-	ft_strlcpy(flag_str, "lu", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%lu", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, -257) == 20, "Test 5: flag l with casting");
 }
@@ -139,15 +139,15 @@ void	test_length_b(void)
 	char		flag_str[100];
 	t_format	flags;
 
-	ft_strlcpy(flag_str, "b", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%b", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_b(&flags) == 8, "Test 1: 1 byte test, no edge case");
 
-	ft_strlcpy(flag_str, "2b", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%2b", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_b(&flags) == 17, "Test 2: 2 byte test, no edge case");
 
-	ft_strlcpy(flag_str, "3b", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%3b", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_b(&flags) == 26, "Test 3: 3 byte test, no edge case");
 }
