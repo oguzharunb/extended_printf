@@ -2,7 +2,7 @@
 
 // it expects a string with the flags to replace
 // the flag have to be in the order of FLAGS
-void og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
+void	og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 {
 	size_t	i;
 
@@ -24,47 +24,44 @@ void og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 			flags->flag_zero += 1;
 		i++;
 	}
-	if ((*(to_replace + i) == DYN_WIDTH))
+	if ((*(to_replace + i) == DYN_WIDTH) && i < size)
 	{
 		flags->dyn_width += 1;
 		i++;
 	}
 	else
 	{
-		while (og_isin(NUMBERS, *(to_replace + i)) && i < size) // width
+		while (og_isin(NUMBERS, *(to_replace + i)) && i < size)
 		{
 			flags->width = (flags->width * 10) + *(to_replace + i) - '0';
 			i++;
 		}
 	}
-
-	if (*(to_replace + i) == PRECISION_START)
+	if (*(to_replace + i) == PRECISION_START && i < size)
 	{
 		i++;
 		flags->precision = 0;
-		while (og_isin(NUMBERS, *(to_replace + i)) && i < size) // if dot is found
+		while (og_isin(NUMBERS, *(to_replace + i)) && i < size)
 		{
 			flags->precision = flags->precision * 10 + *(to_replace + i) - '0';
 			i++;
 		}
 	}
-
-	if (*(to_replace + i) == LM_SHORT)
+	if (*(to_replace + i) == LM_SHORT && i < size)
 	{
 		flags->lm_short += 1;
 		if (*(to_replace + (++i)) == LM_SHORT)
 			flags->lm_short += 1;
 		i++;
 	}
-	else if (*(to_replace + i) == LM_LONG)
+	else if (*(to_replace + i) == LM_LONG && i < size)
 	{
 		flags->lm_long = flags->lm_long + 1;
 		if (*(to_replace + (++i)) == LM_LONG)
 			flags->lm_long += 1;
 		i++;
 	}
-
-	if (og_isin(CONVERSIONS, *(to_replace + i)))
+	if (og_isin(CONVERSIONS, *(to_replace + i)) && i < size)
 	{
 		flags->conversion = *(to_replace + i);
 		i++;
