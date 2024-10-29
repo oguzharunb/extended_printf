@@ -27,6 +27,8 @@
 # include <stddef.h>
 # include <stdarg.h>
 
+//MILESTONE 1
+
 typedef struct s_format
 {
 	int		flag_min;
@@ -65,7 +67,6 @@ size_t			og_length_c(t_format*flags);
 size_t			og_length_s(t_format*flags, char const *str);
 size_t			og_length_b(t_format*flags);
 
-size_t			decoder(t_format *flags, va_list *args);
 size_t			lengthf(char const *string, va_list *args);
 int				flag_check(t_format *flags, size_t size);
 int				replace_dynwidth(t_format *flags, va_list *args);
