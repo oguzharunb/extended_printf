@@ -97,7 +97,7 @@ unsigned long	cast_unumber(t_format *flags, unsigned long nbr)
 
 void	set_base(t_format *flags)
 {
-	if (flags->conversion == 'x')
+	if (flags->conversion == 'x' || flags->conversion == 'X')
 		flags->base = 16;
 	else if (flags->conversion == 'o')
 		flags->base = 8;
