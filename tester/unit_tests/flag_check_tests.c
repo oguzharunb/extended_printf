@@ -23,4 +23,12 @@ void	test_flag_check()
 	ft_strlcpy(string, "%lwfsdasi", sizeof(string));
 	og_fill_flag_bag(string, ft_strlen(string), &flags);
 	test_function(flag_check(&flags, ft_strlen(string)) == 0, "Test 4: text with % start");
+
+	ft_strlcpy(string, "%.2i", sizeof(string));
+	og_fill_flag_bag(string, ft_strlen(string), &flags);
+	test_function(flag_check(&flags, ft_strlen(string)) == 4, "Test 5: precision");
+
+	ft_strlcpy(string, "%23.2i", sizeof(string));
+	og_fill_flag_bag(string, ft_strlen(string), &flags);
+	test_function(flag_check(&flags, ft_strlen(string)) == 6, "Test 6: precision with width");
 }
