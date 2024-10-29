@@ -50,18 +50,24 @@ void	og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 	if (*(to_replace + i) == LM_SHORT && i < size)
 	{
 		flags->lm_short += 1;
-		if (*(to_replace + (++i)) == LM_SHORT)
+		if (*(to_replace + (i + 1)) == LM_SHORT)
+		{
 			flags->lm_short += 1;
+			i++;
+		}
 		i++;
 	}
 	else if (*(to_replace + i) == LM_LONG && i < size)
 	{
 		flags->lm_long = flags->lm_long + 1;
-		if (*(to_replace + (++i)) == LM_LONG)
+		if (*(to_replace + (i + 1)) == LM_LONG)
+		{
 			flags->lm_long += 1;
+			i++;
+		}
 		i++;
 	}
-	if (og_isin(CONVERSIONS, *(to_replace + i)) && i < size)
+	if (og_isin(CONVERSIONS, *(to_replace + i)))
 	{
 		flags->conversion = *(to_replace + i);
 		i++;
