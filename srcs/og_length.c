@@ -4,42 +4,7 @@
 
 //gives the actual length of the string
 //gives the actual length of the string
-
-size_t	lengthf(char const *string, va_list *args)
-{
-	size_t		i;
-	size_t		len;
-	size_t		j;
-	t_format	flags;
-
-	len = 0;
-	i = 0;
-	while (string[i])
-	{
-		if (string[i] != '%')
-		{
-			len++;
-			i++;
-			continue ;
-		}
-		j = 1;
-		while (!ft_isin(string[i + j], CONVERSIONS) && string[i + j])
-			j++;
-		reset_flags(&flags);
-		og_fill_flag_bag(string + i, ++j, &flags);
-		replace_dynwidth(&flags, args);
-		if (!flag_check(&flags, j))
-		{
-			i++;
-			len++;
-			continue ;
-		}
-		len += decoder(&flags, args);
-		i += j;
-	}
-	return (len);
-}
-size_t	decoder(t_format *flags, va_list *args)
+static size_t	decoder(t_format *flags, va_list *args)
 { 
 	if ('a' == flags->conversion)
 		return (og_length_a(flags, va_arg(*args, double)));
@@ -64,3 +29,38 @@ size_t	decoder(t_format *flags, va_list *args)
 	return (0);
 }
 
+
+
+size_t	lengthf(char const *string, va_list *args)
+{
+	size_t		i;
+	size_t		len;
+	size_t		j;
+	t_format	flags;
+
+	len = 0;
+	i = 0;
+	while (string[i])
+	{
+		if (string[i] != '%')
+		{
+			len++;
+			i++;
+			continue ;
+		}
+		j = 1;
+		while (!ft_isin(string[i + j], CONVERSIONS) && string[i + j])
+			j++;
+		og_fill_flag_bag(string + i, ++j, &flags);
+		replace_dynwidth(&flags, args);
+		if (!flag_check(&flags, j))
+		{
+			i++;
+			len++;
+			continue ;
+		}
+		len += decoder(&flags, args);
+		i += j;
+	}
+	return (len);
+}
