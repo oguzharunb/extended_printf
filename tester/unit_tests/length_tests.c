@@ -74,33 +74,38 @@ void	test_length_i()
 	char		flag_str[100];
 	t_format	flags;
 
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%li", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, 12) == 2, "Test 1: no flags");
 
-	ft_strlcpy(flag_str, "l", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%li", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, 21474836471) == 11, "Test 2: long with 'l'");
 
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%i", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, 21474836471) == 2, "Test 3: long without 'l'");
 
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%i", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, -1) == 2, "Test 4: minus int");
 
-	ft_strlcpy(flag_str, "hhi", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%hhi", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, -1) == 2, "Test 5: minus int in char");
 
-	ft_strlcpy(flag_str, "hhi", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%hhi", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, -257) == 2, "Test 6: minus int in char, is type casting works");
 
-	ft_strlcpy(flag_str, "lli", sizeof(flag_str));
+	ft_strlcpy(flag_str, "%lli", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_i(&flags, -257) == 4, "Test 7: minus int in long long");
+
+	ft_strlcpy(flag_str, "%0+20d", sizeof(flag_str));
+	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
+	test_function(og_length_i(&flags, 12) == 20, "Test 8: plus flag, zero flag, 20 width");
+
 }
 
 void	test_length_u(void)

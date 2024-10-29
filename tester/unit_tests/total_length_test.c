@@ -20,6 +20,11 @@ void	test_length_total()
 	test_function(ret == 20, "Test 4: string, int as argument");
 
 	ret = og_printf("hello world %*d %d", 4, 12, 12);
-	printf("ret: %d\n", ret);
-	test_function(ret == 19, "Test 4: string, int as argument");
+	test_function(ret == 19, "Test 5: dynamic width");
+
+	ret = og_printf("hello world %20.1d %d", 12, 12);
+	test_function(ret == 35, "Test 6: static width");
+
+	ret = og_printf("hello world %0+20.1d %d", 12, 12);
+	test_function(ret == 35, "Test 6: static width, zero flag, plus flag");
 }
