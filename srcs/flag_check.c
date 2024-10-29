@@ -9,12 +9,11 @@ int	flag_check(t_format *flags, size_t expected_size)
 	size = 0;
 	size += !!flags->conversion + flags->flag_hash + flags->flag_min
 			+ flags->flag_plus + flags->flag_space + flags->flag_zero
-			+ flags->lm_long + flags->lm_short
-			+  og_unumber_len_base(flags->width, 10) + 1;
-	printf("size: %li, expected size: %li\n", size, expected_size);
+			+ flags->lm_long + flags->lm_short + (flags->precision != -1) * (og_unumber_len_base(flags->precision, 10) + 1)
+			+  ((!!flags->width) * og_unumber_len_base(flags->width, 10)) + 1;
 	if (flags->flag_hash && flags->flag_min)
 	{
-		write(STDOUT_FILENO, "# and - flags cannot be used together.\n", 39);
+		write(STDERR_FILENO, "# and - flags cannot be used together.\n", 39);
 		return (0);
 	}
 	if (size != expected_size)
