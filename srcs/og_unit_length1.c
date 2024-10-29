@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@42kocaeli.com.tr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:49 by obastug           #+#    #+#             */
-/*   Updated: 2024/10/25 10:02:41 by obastug          ###   ########.fr       */
+/*   Updated: 2024/10/29 12:31:12 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ size_t	og_length_i(t_format*flags, long nbr)
 
 	nbr = cast_number(flags, nbr);
 	len = og_number_len_base(nbr, flags->base);
+	if (flags->flag_plus && nbr > 0)
+		len++;
 	if (len > flags->width && len > flags->precision)
 		return (len);
 	if (flags->width > flags->precision)
@@ -63,6 +65,8 @@ size_t	og_length_u(t_format *flags, unsigned long nbr)
 	set_base(flags);
 	nbr = cast_unumber(flags, nbr);
 	len = og_unumber_len_base(nbr, flags->base);
+	if (flags->flag_plus && nbr > 0)
+		len++;
 	if (len > flags->width && len > flags->precision)
 		return (len);
 	if (flags->width > flags->precision)
@@ -103,6 +107,8 @@ size_t	og_length_f(t_format*flags, float number) //what if dyn_width is there
 	if (flags->precision < precision_len && flags->precision != -1)
 		precision_len = flags->precision;
 	len = precision_len + 1 + (og_number_len_base((int)number, 10)); // minus included
+	if (flags->flag_plus && number > 0)
+		len++;
 	if (flags->width > (int)len)
 		return (flags->width);
 	return (len);
