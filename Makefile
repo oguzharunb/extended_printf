@@ -10,7 +10,8 @@ SRC =	og_unit_length1.c \
 		utils.c \
 		og_length.c \
 		og_printf.c \
-		flag_check.c
+		flag_check.c \
+		dynwidth_replacer.c
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
