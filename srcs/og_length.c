@@ -26,13 +26,18 @@ size_t	lengthf(char const *string, va_list *args)
 		while (!ft_isin(string[i + j], CONVERSIONS) && string[i + j])
 			j++;
 		reset_flags(&flags);
-		og_fill_flag_bag(string + i, j + 1, &flags);
-		if (!flag_check(&flags, j + 1))
-						
-		i++;
+		og_fill_flag_bag(string + i, ++j, &flags);
+		replace_dynwidth(&flags, args);
+		if (!flag_check(&flags, j))
+		{
+			i++;
+			len++;
+			continue ;
+		}
+		len += decoder(&flags, args);
+		i += j;
 	}
-	(void)args;
-	return (1);
+	return (len);
 }
 size_t	decoder(t_format *flags, va_list *args)
 { 
