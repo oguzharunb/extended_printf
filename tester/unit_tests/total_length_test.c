@@ -26,5 +26,9 @@ void	test_length_total()
 	test_function(ret == 35, "Test 6: static width");
 
 	ret = og_printf("hello world %0+20.1d %d", 12, 12);
-	test_function(ret == 35, "Test 6: static width, zero flag, plus flag");
+	test_function(ret == 35, "Test 7: static width, zero flag, plus flag");
+
+	ret = og_printf("%f", 1.0625f);
+	printf("ret: %d\n", ret);
+	test_function(ret == 6, "Test 8: float");
 }

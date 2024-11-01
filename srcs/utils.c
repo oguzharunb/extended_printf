@@ -107,3 +107,9 @@ void	set_base(t_format *flags)
 		flags->base = 2;
 }
 
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}

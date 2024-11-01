@@ -1,23 +1,38 @@
 #include "../includes/og_printf.h"
 #include "../libft/libft.h"
 
-int	write_signed_number(t_format *flags, char *dest, long number)
+// write signed number
+// handle ' ' flag
+// handle '+' flag
+// handle '-' flag
+
+int	write_di_format(t_format *flags, char *dest, long number)
 {
-	(void)flags;
-	(void)dest;
-	(void)number;
+	size_t	len;
+	size_t	i;
+	char	filler;
+
+	len = og_number_len_base(number, flags->base);
+	if (number > 0 && (flags->flag_plus || flags->flag_space))
+		len++;
+	i = 0;
+	while (len + i < flags->width && !flags->flag_min)
+		dest[i++] = filler;
+	write_signed_number(number, dest, flags, len);
+	while (len + i < flags->width && flags->flag_min)
+		dest[i++] = filler;
 	return (1);
 }
 
-int	write_unsigned_number(t_format *flags, char *dest, unsigned long number)
+int	write_uoxX_format(t_format *flags, char *dest, unsigned long number)
 {
-	(void)flags;
-	(void)dest;
-	(void)number;
+	size_t	len;
+	
+	len = og_unumber_len_base(number, flags->base);
 	return (1);
 }
 
-int	write_string(t_format *flags, char *dest, char *src)
+int	write_s_format(t_format *flags, char *dest, char *src)
 {
 	(void)flags;
 	(void)dest;
@@ -25,7 +40,7 @@ int	write_string(t_format *flags, char *dest, char *src)
 	return (1);
 }
 
-int	write_pointer(t_format *flags, char *dest, void *address)
+int	write_p_format(t_format *flags, char *dest, void *address)
 {
 	(void)flags;
 	(void)dest;
@@ -33,7 +48,7 @@ int	write_pointer(t_format *flags, char *dest, void *address)
 	return (1);
 }
 
-int	write_double(t_format *flags, char *dest, double number)
+int	write_a_format(t_format *flags, char *dest, double number)
 {
 	(void)flags;
 	(void)dest;
@@ -41,7 +56,7 @@ int	write_double(t_format *flags, char *dest, double number)
 	return (1);
 }
 
-int	write_scientific(t_format *flags, char *dest, double number)
+int	write_e_format(t_format *flags, char *dest, double number)
 {
 	(void)flags;
 	(void)dest;
@@ -49,7 +64,7 @@ int	write_scientific(t_format *flags, char *dest, double number)
 	return (1);
 }
 
-int write_float(t_format *flags, char *dest, float number)
+int write_f_format(t_format *flags, char *dest, float number)
 {
 	(void)flags;
 	(void)dest;
