@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@42kocaeli.com.tr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:49 by obastug           #+#    #+#             */
-/*   Updated: 2024/10/29 12:31:12 by obastug          ###   ########.fr       */
+/*   Updated: 2024/11/02 05:36:39 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ size_t	og_length_o(t_format*flags, int nbr)
 
 //printf("%d\n", ((number_i & 2139095040) >> 23) - 127); // 2139095040 = 0'1111111'00000000000000000000000 // that is exponent
 
-size_t	og_length_f(t_format*flags, float number) //what if dyn_width is there
+size_t	og_length_f(t_format*flags, float number, int i) //what if dyn_width is there
 {
 	unsigned int			number_i;
 	register unsigned int	precision_wiss;
@@ -101,9 +101,9 @@ size_t	og_length_f(t_format*flags, float number) //what if dyn_width is there
 	number_i = (unsigned int)*(unsigned int *)&number;
 	minus_one = -1;
 	precision_wiss = 0;
-	while (number_i == (number_i & (minus_one << precision_wiss)))
+	while (number_i == (number_i & (minus_one << precision_wiss)) && i++ < 24)
 		precision_wiss++;
-	precision_len = 24 - precision_wiss - (int)(((number_i & FLOAT_EXPONENT_MASK) >> 23) - 127);
+	precision_len = 24 - precision_wiss - ((int)(((number_i & FLOAT_EXPONENT_MASK) >> 23) - 127));
 	if (flags->precision < precision_len && flags->precision != -1)
 		precision_len = flags->precision;
 	len = precision_len + 1 + (og_number_len_base((int)number, 10)); // minus included
@@ -118,7 +118,7 @@ size_t	og_length_e(t_format*flags, double number)
 {
 	size_t	len;
 	
-	len = og_length_f(flags, number);	
+	len = og_length_f(flags, number, 0);	
 	len += 4;
 	return (len);
 }
