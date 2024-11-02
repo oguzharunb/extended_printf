@@ -17,7 +17,7 @@ static size_t	decoder(t_format *flags, va_list *args)
 	else if ('e' == flags->conversion)
 		return (og_length_e(flags, va_arg(*args, double)));
 	else if ('f' == flags->conversion)
-		return (og_length_f(flags, va_arg(*args, double)));
+		return (og_length_f(flags, va_arg(*args, double), 0));
 	else if (og_isin("uoxX", flags->conversion))
 		return (og_length_u(flags, va_arg(*args, unsigned long)));
 	else if ('s' == flags->conversion)
