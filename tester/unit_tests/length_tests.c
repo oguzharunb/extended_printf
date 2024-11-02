@@ -46,27 +46,27 @@ void	test_length_f()
 
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.25) == 5, "Test 1: no flags");
+	test_function(og_length_f(&flags, 12.25f, 0) == 5, "Test 1: no flags");
 
 	ft_strlcpy(flag_str, ".1", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.25) == 4, "Test 2: precision limited");
+	test_function(og_length_f(&flags, 12.25f, 0) == 4, "Test 2: precision limited");
 	
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.0625) == 7, "Test 3: no flags");
+	test_function(og_length_f(&flags, 12.0625f, 0) == 7, "Test 3: no flags");
 
 	ft_strlcpy(flag_str, "", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.03125) == 8, "Test 4: no flags");
+	test_function(og_length_f(&flags, 12.03125f, 0) == 8, "Test 4: no flags");
 
 	ft_strlcpy(flag_str, "10", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.03125) == 10, "Test 5: width over len");
+	test_function(og_length_f(&flags, 12.03125f, 0) == 10, "Test 5: width over len");
 
 	ft_strlcpy(flag_str, "10.3", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.03125) == 10, "Test 6: width over len with limited precision");
+	test_function(og_length_f(&flags, 12.03125f, 0) == 10, "Test 6: width over len with limited precision");
 }
 
 void	test_length_i()
