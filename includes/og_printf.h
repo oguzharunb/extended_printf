@@ -58,7 +58,7 @@ size_t			og_number_len_base(long number, size_t base);
 
 size_t			og_length_a(t_format*flags, double number);
 size_t			og_length_e(t_format*flags, double number);
-size_t			og_length_f(t_format*flags, float number);
+size_t			og_length_f(t_format*flags, float number, int i);
 size_t			og_length_o(t_format*flags, int nbr);
 size_t			og_length_u(t_format *flags, unsigned long nbr);
 size_t			og_length_i(t_format*flags, long nbr);
@@ -70,7 +70,6 @@ size_t			og_length_b(t_format*flags);
 size_t			lengthf(char const *string, va_list *args);
 int				flag_check(t_format *flags, size_t size);
 int				replace_dynwidth(t_format *flags, va_list *args);
-
 
 int				og_printf(const char *string, ...);
 #endif
