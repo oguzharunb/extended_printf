@@ -37,6 +37,11 @@ void	write_signed_number(long number, char *dest, t_format *flags)
 		if (flags->flag_plus)
 			*dest = '+';
 		else
-			dest[i - 1] = '+';  
+			dest[i - 1] = '+';
 	}
+}
+
+void	write_float_number(float number, char *dest, t_format *flags)
+{
+
 }
