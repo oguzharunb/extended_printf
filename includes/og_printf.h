@@ -71,5 +71,7 @@ size_t			lengthf(char const *string, va_list *args);
 int				flag_check(t_format *flags, size_t size);
 int				replace_dynwidth(t_format *flags, va_list *args);
 
+void			write_signed_number(long number, char *dest, t_format *flags);
+
 int				og_printf(const char *string, ...);
 #endif
