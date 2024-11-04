@@ -12,4 +12,6 @@ int main(void)
 	run_tests(test_length_b, "test_length_b");
 	run_tests(test_length_total, "test_length_total");
 	run_tests(test_flag_check, "test_flag_check");
+	run_tests(write_unit_tests, "write_unit_tests");
+	return (0);
 }
