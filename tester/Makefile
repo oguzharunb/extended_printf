@@ -1,7 +1,7 @@
 NAME = tester
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = tester.c main.c unit_tests/length_tests.c unit_tests/total_length_test.c unit_tests/flag_check_tests.c
+SRCS = tester.c main.c unit_tests/length_tests.c unit_tests/total_length_test.c unit_tests/flag_check_tests.c unit_tests/write_unit_tests.c
 OBJECTS = $(SRCS:.c=.o)
 LIB = ../og_printf.a
 HEADER = tester.h
