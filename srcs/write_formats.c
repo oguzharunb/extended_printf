@@ -18,7 +18,7 @@ int	write_di_format(t_format *flags, char *dest, long number)
 	i = 0;
 	while (len + i < flags->width && !flags->flag_min)
 		dest[i++] = filler;
-	write_signed_number(number, dest, flags, len);
+	write_signed_number(number, dest, flags);
 	while (len + i < flags->width && flags->flag_min)
 		dest[i++] = filler;
 	return (1);
