@@ -18,4 +18,5 @@ void	test_length_b(void);
 void	test_flag_check(void);
 void	test_length_total(void);
 void	write_unit_tests(void);
+void	write_util_tests(void);
 #endif
