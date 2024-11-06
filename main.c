@@ -1,27 +1,35 @@
 #include "./includes/og_printf.h"
 #include <stdio.h>
 
-#define FRACTION_ITER 0b00000000010000000000000000000000
+
 int main(void)
 {
-	float a = 10.125f;
-	int exponent;
-	int fraction_b = *(int *)&a;
-	int iter = 5;
-	int i = 0;
-	long total = 0;
+	float a = 0.625f;
+	long exponent;
+	long fraction_b = *(int *)&a;
+	unsigned long iter = 5;
+	long i = 0;
+	unsigned long total = 0;
+	long basamak = 0;
 	exponent = ((*(int *)&a & FLOAT_EXPONENT_MASK) >> 23) - 127;
-	fraction_b = ((*(int *)&a & FLOAT_FRACTION_MASK)) << exponent;
-	while (i < 23)
+	if (exponent >= 0)
+		fraction_b = ((*(int *)&a & FLOAT_FRACTION_MASK)) << exponent;
+	else
+		fraction_b = ((((*(int *)&a & FLOAT_FRACTION_MASK)) >> 1) | FRACTION_ITER) >> (ft_abs(exponent) - 1);
+	while (i < 19)
 	{
 		if ((FRACTION_ITER >> i) & fraction_b)
 		{
-			total = (total * 10) + iter;
-			iter *= 5;
-			printf("i: %d\n", (FRACTION_ITER >> i) & fraction_b);
-			printf("total: %ld\n", total);
+			if (basamak)
+				total = total * power(10, i - basamak + 1) + iter;
+			else
+				total = total + iter;
+			printf("total: %ld, iter: %lu, i: %ld, basamak: %ld, power: %ld\n", total, iter, i, basamak, power(10, basamak));
+			basamak = i + 1;
 		}
+		iter *= 5;
 		i++;
 	}
+	printf("final: %0*ld\n", (int)basamak, total);
 	return (0);
 }
