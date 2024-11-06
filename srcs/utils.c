@@ -107,17 +107,16 @@ void	set_base(t_format *flags)
 		flags->base = 2;
 }
 
-long	power(long number, unsigned long power)
+long	power(long number, unsigned long pw)
 {
-	size_t	i;
-
-	i = 0;
-	if (!power)
+	if (pw == 0)
 		return (1);
-	while (i < power - 1)
-	{
-		number *= number;
-		i++;
-	}
+	return (number * power(number, pw - 1));
+}
+
+long	ft_abs(long number)
+{
+	if (number < 0)
+		return (-number);
 	return (number);
 }
