@@ -106,3 +106,18 @@ void	set_base(t_format *flags)
 	else if (flags->conversion == 'b')
 		flags->base = 2;
 }
+
+long	power(long number, unsigned long power)
+{
+	size_t	i;
+
+	i = 0;
+	if (!power)
+		return (1);
+	while (i < power - 1)
+	{
+		number *= number;
+		i++;
+	}
+	return (number);
+}
