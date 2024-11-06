@@ -11,31 +11,31 @@ void	write_unit_tests(void)
 
 	og_fill_flag_bag("%i", 2, &flags);
 	write_signed_number(123, str, &flags);
-	printf("'%s'\n", str);
 	test_function(!ft_memcmp(str, "123", ft_strlen(str)), "Test 1: int number");
 
 	og_fill_flag_bag("%5i", 3, &flags);
 	write_signed_number(123, str, &flags);
-	printf("'%s'\n", str);
 	test_function(!ft_memcmp(str, "  123", ft_strlen(str)), "Test 2: int number with width");
 
 	og_fill_flag_bag("%-5i", 3, &flags);
 	write_signed_number(123, str, &flags);
-	printf("'%s'\n", str);
 	test_function(!ft_memcmp(str, "123  ", ft_strlen(str)), "Test 3: int number with width and - flag");
 
 	og_fill_flag_bag("%05i", 3, &flags);
 	write_signed_number(123, str, &flags);
-	printf("'%s'\n", str);
 	test_function(!ft_memcmp(str, "00123", ft_strlen(str)), "Test 4: int number with width and 0 flag");
 
 	og_fill_flag_bag("%05i", 4, &flags);
 	write_signed_number(123456, str, &flags);
-	printf("'%s'\n", str);
 	test_function(!ft_memcmp(str, "123456", ft_strlen(str)), "Test 5: len > width and 0 flag");
 
 	og_fill_flag_bag("%+05i", 5, &flags);
 	write_signed_number(123, str, &flags);
-	printf("'%s'\n", str);
+	ft_bzero(str, 50);
 	test_function(!ft_memcmp(str, "+0123", ft_strlen(str)), "Test 6: int number with width and 0 flag and plus addition");
+
+	og_fill_flag_bag("%-7i", 5, &flags);
+	write_signed_number(123, str, &flags);
+	test_function(!ft_memcmp(str, "123     ", ft_strlen(str)), "Test 7: int number with width and - flag");
+	
 }
