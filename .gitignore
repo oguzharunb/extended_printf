@@ -1,5 +1,9 @@
 .vscode/
 libft/
+libft/*.o
+srcs/*.o
+tester/*.o
+tester/unit_tests/*.o
 og_printf
 *.o
 a.out
