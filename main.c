@@ -10,7 +10,7 @@ int main(void)
 	unsigned long iter = 5;
 	long i = 0;
 	unsigned long total = 0;
-	long basamak = 0;
+	long step = 0;
 	exponent = ((*(int *)&a & FLOAT_EXPONENT_MASK) >> 23) - 127;
 	if (exponent >= 0)
 		fraction_b = ((*(int *)&a & FLOAT_FRACTION_MASK)) << exponent;
@@ -20,16 +20,16 @@ int main(void)
 	{
 		if ((FRACTION_ITER >> i) & fraction_b)
 		{
-			if (basamak)
-				total = total * power(10, i - basamak + 1) + iter;
+			if (step)
+				total = total * power(10, i - step + 1) + iter;
 			else
 				total = total + iter;
-			printf("total: %ld, iter: %lu, i: %ld, basamak: %ld, power: %ld\n", total, iter, i, basamak, power(10, basamak));
-			basamak = i + 1;
+			printf("total: %ld, iter: %lu, i: %ld, step: %ld, power: %ld\n", total, iter, i, step, power(10, step));
+			step = i + 1;
 		}
 		iter *= 5;
 		i++;
 	}
-	printf("final: %0*ld\n", (int)basamak, total);
+	printf("final: %0*ld\n", (int)step, total);
 	return (0);
 }

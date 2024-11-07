@@ -7,11 +7,11 @@
 void	write_util_tests(void)
 {
 	unsigned long	ret;
-	long			basamak = 0;
-	ret = float_fraction(0.25, 1, 0, &basamak, 5);
-	test_function(ret == 25 && basamak == 2, "Test 1: 0.25");
+	long			step = 0;
+	ret = float_fraction(0.25, 1, 0, &step, 5);
+	test_function(ret == 25 && step == 2, "Test 1: 0.25");
 
-	basamak = 0;
-	ret = float_fraction(0.75, 1, 0, &basamak, 5);
-	test_function(ret == 75 && basamak == 2, "Test 2: 0.75");
+	step = 0;
+	ret = float_fraction(0.75, 1, 0, &step, 5);
+	test_function(ret == 75 && step == 2, "Test 2: 0.75");
 }
