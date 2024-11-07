@@ -72,3 +72,7 @@ int write_f_format(t_format *flags, char *dest, float number)
 	return (1);
 }
 
+int	write_c_format(t_format *flags, char *dest, float number)
+{
+	
+}
