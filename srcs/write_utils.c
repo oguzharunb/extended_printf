@@ -1,7 +1,7 @@
 #include "../includes/og_printf.h"
 
 // (number, 0, 0, 0, 5)
-unsigned long	float_fraction(float number, long i, unsigned long total, long basamak, unsigned long iter)
+unsigned long	float_fraction(float number, long i, unsigned long total, long *basamak, unsigned long iter)
 {
 	long exponent;
 	long fraction_b;
@@ -18,11 +18,11 @@ unsigned long	float_fraction(float number, long i, unsigned long total, long bas
 	{
 		if ((FRACTION_ITER >> i) & fraction_b)
 		{
-			if (basamak)
-				total = total * power(10, i - basamak + 1) + iter;
+			if (*basamak)
+				total = total * power(10, i - *basamak + 1) + iter;
 			else
 				total = total + iter;
-			basamak = i + 1;
+			*basamak = i + 1;
 		}
 		iter *= 5;
 		i++;
