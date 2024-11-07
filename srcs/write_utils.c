@@ -1,23 +1,19 @@
 #include "../includes/og_printf.h"
 
-unsigned long	float_fraction(float number, long i)
+// (number, 0, 0, 0, 5)
+unsigned long	float_fraction(float number, long i, unsigned long total, long basamak, unsigned long iter)
 {
 	long exponent;
 	long fraction_b;
-	register unsigned long iter;
-	unsigned long total;
-	long basamak;
 
 	fraction_b = *(int *)&number;
 	i = 0;
-	total = 0;
-	basamak = 0;
-	iter = 5;
 	exponent = ((*(int *)&number & FLOAT_EXPONENT_MASK) >> 23) - 127;
 	if (exponent >= 0)
 		fraction_b = ((*(int *)&number & FLOAT_FRACTION_MASK)) << exponent;
 	else
-		fraction_b = ((((*(int *)&number & FLOAT_FRACTION_MASK)) >> 1) | FRACTION_ITER) >> (ft_abs(exponent) - 1);
+		fraction_b = ((((*(int *)&number & FLOAT_FRACTION_MASK)) >> 1)
+					| FRACTION_ITER) >> (ft_abs(exponent) - 1);
 	while (i < 19)
 	{
 		if ((FRACTION_ITER >> i) & fraction_b)
