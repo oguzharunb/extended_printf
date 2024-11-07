@@ -14,6 +14,7 @@ SRC =	og_unit_length1.c \
 		og_printf.c \
 		write_raw_value.c \
 		write_utils.c \
+		write_unsigned_number.c \
 
 OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 
