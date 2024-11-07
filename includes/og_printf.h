@@ -77,8 +77,8 @@ int				replace_dynwidth(t_format *flags, va_list *args);
 
 unsigned long	float_fraction(float number, long i, unsigned long total, long basamak, unsigned long iter);
 
+void			write_usigned_number(unsigned long number, char *dest, t_format *flags);
 void			write_signed_number(long number, char *dest, t_format *flags);
-void			write_unsigned_number(unsigned long, char *dest, t_format *flags);
 void			write_float_number(float number, char *dest, t_format *flags);
 
 int				og_printf(const char *string, ...);
