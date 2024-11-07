@@ -75,7 +75,7 @@ size_t			lengthf(char const *string, va_list *args);
 int				flag_check(t_format *flags, size_t size);
 int				replace_dynwidth(t_format *flags, va_list *args);
 
-unsigned long	float_fraction(float number, long i);
+unsigned long	float_fraction(float number, long i, unsigned long total, long basamak, unsigned long iter);
 
 void			write_signed_number(long number, char *dest, t_format *flags);
 void			write_unsigned_number(unsigned long, char *dest, t_format *flags);
