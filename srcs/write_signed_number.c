@@ -14,19 +14,19 @@ static void	write_signed_number2(long number, char *dest, t_format *flags, int i
 		else
 			dest[i - 1] = '-';
 	}
-	else if (flags->flag_plus)
-	{
-		if (flags->flag_zero)
-			*dest = '+';
-		else
-			dest[i - 1] = '+';
-	}
 	else if (flags->flag_space)
 	{
 		if (flags->flag_zero)
 			*dest = ' ';
 		else
 			dest[i - 1] = ' ';
+	}
+	else if (flags->flag_plus)
+	{
+		if (flags->flag_zero)
+			*dest = '+';
+		else
+			dest[i - 1] = '+';
 	}
 }
 
