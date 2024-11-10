@@ -45,6 +45,7 @@ typedef struct s_format
 	int		precision;
 	int		size;
 	int		base;
+	int		hash_len;
 	char	conversion;
 } t_format;
 
