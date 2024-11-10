@@ -101,7 +101,6 @@ void	write_usigned_number_tests(void)
 	ft_bzero(str, 50);
 	og_fill_flag_bag("%-#7x", 5, &flags);
 	write_usigned_number(123, str, &flags);
-	print_flags(&flags);
 	printf("'%s'\n", str);
 	test_function(!ft_memcmp(str, "0x7b   ", ft_strlen(str)), "Test 9: uint number conversion 'x' and flag '-' and flag '#' and width");
 
