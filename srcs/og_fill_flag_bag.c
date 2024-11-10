@@ -72,4 +72,9 @@ void	og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 		flags->conversion = *(to_replace + i);
 		i++;
 	}
+	set_base(flags);
+	if (flags->base == 8)
+		flags->hash_len = 1;
+	else if (flags->base ==  16)
+		flags->hash_len = 2;
 }
