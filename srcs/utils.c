@@ -29,6 +29,7 @@ void	print_flags(t_format*flags) // temporary
 	printf("precision: %d\n", flags->precision);
 	printf("size: %d\n", flags->size);
 	printf("conversion: %c\n", flags->conversion);
+	printf("hash_len: %d\n", flags->hash_len);
 	printf("----------------\n");
 }
 
