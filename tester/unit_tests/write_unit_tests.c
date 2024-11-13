@@ -125,5 +125,33 @@ void	write_float_number_tests(void)
 	write_float_number(10.1f, str);
 	printf("str: '%s'\n", str);
 	test_function(!ft_memcmp(str, "10.1000003814697265625", ft_strlen(str)), "Test 3: float number with fraction");
+}
 
+void	write_string_tests(void)
+{
+	t_format	flags;
+	char	*str = calloc(50, 1);
+
+	og_fill_flag_bag("%s", 2, &flags);
+	write_string("hello world", str, &flags);
+	printf("%s\n", str);
+	test_function(!ft_memcmp("hello world", str, ft_strlen(str)), "Test 1: just string");
+
+	ft_bzero(str, 50);
+	og_fill_flag_bag("%10s", 3, &flags);
+	write_string("hello", str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("     hello", str, ft_strlen(str)), "Test 2: string with width");
+
+	ft_bzero(str, 50);
+	og_fill_flag_bag("%-10s", 4, &flags);
+	write_string("hello", str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("hello     ", str, ft_strlen(str)), "Test 3: string with width and flag min");
+
+	ft_bzero(str, 50);
+	og_fill_flag_bag("%-10.2s", 6, &flags);
+	write_string("hello", str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("he        ", str, ft_strlen(str)), "Test 4: string with width and flag min and precision");
 }

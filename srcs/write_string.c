@@ -17,9 +17,9 @@ void	write_string(char *string, char *dest, t_format *flags)
 	else
 		string_len = ft_strlen(string);
 	start = 0;
-	if (flags->flag_min)
+	if (!flags->flag_min)
 		start = flags->width - string_len;
-	while (string[i])
+	while (i < string_len)
 	{
 		dest[i + start] = string[i];
 		i++;
