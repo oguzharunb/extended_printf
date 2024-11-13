@@ -4,7 +4,7 @@
 
 unsigned long	float_fraction(float number, long i, unsigned long total, long *step, unsigned long iter);
 
-char	*write_float_number(float number, char *dest)
+void	write_float_number(float number, char *dest)
 {
     unsigned long	fraction;
     unsigned long	integer;
