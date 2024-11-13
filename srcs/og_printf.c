@@ -5,8 +5,14 @@ int	og_printf(const char *string, ...)
 {
 	va_list	args;
 	size_t	len;
+	char	*final_string;
 
 	va_start(args, string);
 	len = lengthf(string, &args);
+	final_string = malloc(len + 1);
+	if (!final_string)
+		return (NULL);
+	va_start(args, string);
+	fill_string(string, args, final_string);
 	return (int)len;
 }
