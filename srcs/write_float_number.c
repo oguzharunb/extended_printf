@@ -6,10 +6,10 @@ unsigned long	float_fraction(float number, long i, unsigned long total, long *st
 
 char	*write_float_number(float number, char *dest)
 {
-    unsigned long fraction;
-    unsigned long integer;
-    unsigned long i;
-    
+    unsigned long	fraction;
+    unsigned long	integer;
+    unsigned long	i;
+    long			save;
 
     i = og_unumber_len_base(fraction, 10) + og_unumber_len_base(integer, 10);
     memset(dest, '0', i);
