@@ -105,3 +105,15 @@ void	write_usigned_number_tests(void)
 	test_function(!ft_memcmp(str, "0x7b   ", ft_strlen(str)), "Test 9: uint number conversion 'x' and flag '-' and flag '#' and width");
 
 }
+
+void	write_float_number_tests(void)
+{
+	t_format	flags;
+	char *str = calloc(50, 1);
+
+	og_fill_flag_bag("%f", 2, &flags);
+	write_float_number(10.f, str);
+	printf("str: '%s'\n", str);
+	test_function(!ft_memcmp(str, "10.0", ft_strlen(str)), "Test 1: float number");
+
+}
