@@ -1,32 +1,35 @@
 #include "../includes/og_printf.h"
+#include "../libft/libft.h"
 
 // (number, 0, 0, 0, 5)
-
-unsigned long	float_fraction(float number, long i, unsigned long total, long *step, unsigned long iter);
 
 void	write_float_number(float number, char *dest)
 {
     unsigned long	fraction;
     unsigned long	integer;
     unsigned long	i;
-    long			save;
+	long	step;
 
+	step = 0;
+	integer = (unsigned long)number;
+	fraction = float_fraction(number, 0, 0, &step, 5);
     i = og_unumber_len_base(fraction, 10) + og_unumber_len_base(integer, 10);
-    memset(dest, '0', i);
-    while (fraction)
+    //ft_memset(dest, '0', i);
+	if (!fraction)
+		dest[i--] = '0';
+	while (fraction)
     {
         dest[i] = (fraction % 10) + '0';
         fraction /= 10;
         i--;
     }
-    dest[i--] = '.';
+	dest[i--] = '.';
     while (integer)
     {
         dest[i] = (integer % 10) + '0';
         integer /= 10;
         i--;
     }
-	return (og_unumber_len_base(fraction, 10) + og_unumber_len_base(integer, 10));
 }
 
 // number, 0, 0, &step = 0, 5
