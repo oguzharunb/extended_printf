@@ -15,5 +15,6 @@ int main(void)
 	run_tests(write_signed_number_tests, "write_signed_number_tests");
 	run_tests(write_usigned_number_tests, "write_usigned_number_tests");
 	run_tests(write_util_tests, "write_util_tests");
+	run_tests(write_float_number_tests, "write_float_number_tests");
 	return (0);
 }
