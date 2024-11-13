@@ -2,18 +2,34 @@
 
 // (number, 0, 0, 0, 5)
 
-void	write_float_number(float number, char *dest, t_format *flags)
+unsigned long	float_fraction(float number, long i, unsigned long total, long *step, unsigned long iter);
+
+char	*write_float_number(float number, char *dest)
 {
-	(void)number;
-	(void)dest;
-	(void)flags;
+    unsigned long fraction;
+    unsigned long integer;
+    unsigned long i;
+    
+
+    i = og_unumber_len_base(fraction, 10) + og_unumber_len_base(integer, 10);
+    memset(dest, '0', i);
+    while (fraction)
+    {
+        dest[i] = (fraction % 10) + '0';
+        fraction /= 10;
+        i--;
+    }
+    dest[i--] = '.';
+    while (integer)
+    {
+        dest[i] = (integer % 10) + '0';
+        integer /= 10;
+        i--;
+    }
+	return (og_unumber_len_base(fraction, 10) + og_unumber_len_base(integer, 10));
 }
 
-unsigned long	float_integer(float number)
-{
-	return ((unsigned long)number);
-}
-
+// number, 0, 0, &step = 0, 5
 unsigned long	float_fraction(float number, long i, unsigned long total, long *step, unsigned long iter)
 {
 	long exponent;
