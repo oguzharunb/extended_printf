@@ -116,4 +116,14 @@ void	write_float_number_tests(void)
 	printf("str: '%s'\n", str);
 	test_function(!ft_memcmp(str, "10.0", ft_strlen(str)), "Test 1: float number");
 
+	og_fill_flag_bag("%f", 2, &flags);
+	write_float_number(10.75f, str);
+	printf("str: '%s'\n", str);
+	test_function(!ft_memcmp(str, "10.75", ft_strlen(str)), "Test 2: float number with fraction");
+
+	og_fill_flag_bag("%f", 2, &flags);
+	write_float_number(10.1f, str);
+	printf("str: '%s'\n", str);
+	test_function(!ft_memcmp(str, "10.1000003814697265625", ft_strlen(str)), "Test 3: float number with fraction");
+
 }
