@@ -82,5 +82,6 @@ void			write_usigned_number(unsigned long number, char *dest, t_format *flags);
 void			write_signed_number(long number, char *dest, t_format *flags);
 void			write_float_number(float number, char *dest);
 void			write_string(char *string, char *dest, t_format *flags);
+void			write_char(char c, char *dest, t_format *flags);
 int				og_printf(const char *string, ...);
 #endif

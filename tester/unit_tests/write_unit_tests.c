@@ -50,6 +50,7 @@ void	write_signed_number_tests(void)
 	test_function(!ft_memcmp(str, " 000123", ft_strlen(str)), "Test 9: int number with width and ' '(space) flag");
 
 }
+
 void	write_usigned_number_tests(void)
 {
 	t_format	flags;
@@ -154,4 +155,26 @@ void	write_string_tests(void)
 	write_string("hello", str, &flags);
 	printf("'%s'\n", str);
 	test_function(!ft_memcmp("he        ", str, ft_strlen(str)), "Test 4: string with width and flag min and precision");
+}
+
+void	write_char_tests(void)
+{
+	char		*str = calloc(50, 1);
+	t_format	flags;
+
+	og_fill_flag_bag("%c", 2, &flags);
+	write_char('a', str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("a", str, ft_strlen(str)), "Test 1: just char");
+
+	og_fill_flag_bag("%2c", 3, &flags);
+	write_char('a', str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp(" a", str, ft_strlen(str)), "Test 2: char and width");
+
+	og_fill_flag_bag("%-2c", 3, &flags);
+	write_char('a', str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("a ", str, ft_strlen(str)), "Test 3: char and width and minus flag");
+
 }
