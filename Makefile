@@ -6,15 +6,16 @@ NAME = og_printf.a
 LIBFT = ./libft/libft.a
 SRC_DIR = ./srcs
 SRC =	og_unit_length1.c \
+		og_unit_length2.c \
 		og_fill_flag_bag.c \
 		utils.c \
+		utils2.c \
 		og_length.c \
 		flag_check.c \
 		dynwidth_replacer.c \
 		og_printf.c \
 		write_unsigned_number.c \
 		write_signed_number.c \
-		write_float_number.c \
 		write_string.c \
 		write_char.c \
 		write_pointer.c \

@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dynwidth_replacer.c                                :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 16:37:41 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 16:37:42 by obastug          ###   ########.fr       */
+/*   Created: 2024/12/17 17:27:16 by obastug           #+#    #+#             */
+/*   Updated: 2024/12/17 17:27:22 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/og_printf.h"
 
-int	replace_dynwidth(t_format *flags, va_list *args)
+long	cast_number(t_format *flags, long nbr)
 {
-	if (!flags->dyn_width)
-		return (0);
-	flags->width = va_arg(*args, int);
-	return (1);
+	if (flags->lm_long == 0)
+		nbr = (int)nbr;
+	if (flags->lm_short == 1)
+		nbr = (short)nbr;
+	else if (flags->lm_short == 2)
+		nbr = (char)nbr;
+	return (nbr);
 }

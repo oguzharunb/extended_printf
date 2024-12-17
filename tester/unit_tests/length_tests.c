@@ -39,36 +39,6 @@ void	test_length_s()
 	test_function(og_length_s(&flags, "hello") == 7, "Test 4: width over precision over len with another flag");
 }
 
-void	test_length_f()
-{
-	char	flag_str[100];
-	t_format	flags;
-
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.25f, 0) == 5, "Test 1: no flags");
-
-	ft_strlcpy(flag_str, ".1", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.25f, 0) == 4, "Test 2: precision limited");
-	
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.0625f, 0) == 7, "Test 3: no flags");
-
-	ft_strlcpy(flag_str, "", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.03125f, 0) == 8, "Test 4: no flags");
-
-	ft_strlcpy(flag_str, "10", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.03125f, 0) == 10, "Test 5: width over len");
-
-	ft_strlcpy(flag_str, "10.3", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_f(&flags, 12.03125f, 0) == 10, "Test 6: width over len with limited precision");
-}
-
 void	test_length_i()
 {
 	char		flag_str[100];
@@ -132,22 +102,4 @@ void	test_length_u(void)
 	ft_strlcpy(flag_str, "%lu", sizeof(flag_str));
 	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
 	test_function(og_length_u(&flags, -257) == 20, "Test 5: flag l with casting");
-}
-
-void	test_length_b(void)
-{
-	char		flag_str[100];
-	t_format	flags;
-
-	ft_strlcpy(flag_str, "%b", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_b(&flags) == 8, "Test 1: 1 byte test, no edge case");
-
-	ft_strlcpy(flag_str, "%2b", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_b(&flags) == 17, "Test 2: 2 byte test, no edge case");
-
-	ft_strlcpy(flag_str, "%3b", sizeof(flag_str));
-	og_fill_flag_bag(flag_str, ft_strlen(flag_str), &flags);
-	test_function(og_length_b(&flags) == 26, "Test 3: 3 byte test, no edge case");
 }

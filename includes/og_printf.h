@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:14:36 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 16:17:26 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/17 17:12:50 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,16 @@ size_t			og_number_len_base(long number, size_t base);
 long			power(long number, unsigned long power);
 long			ft_abs(long number);
 
-size_t			og_length_a(t_format*flags, double number);
-size_t			og_length_e(t_format*flags, double number);
-size_t			og_length_f(t_format*flags, float number, int i);
 size_t			og_length_o(t_format*flags, int nbr);
 size_t			og_length_u(t_format *flags, unsigned long nbr);
 size_t			og_length_i(t_format*flags, long nbr);
 size_t			og_length_p(t_format*flags, void *ptr);
 size_t			og_length_c(t_format*flags);
 size_t			og_length_s(t_format*flags, char const *str);
-size_t			og_length_b(t_format*flags);
 
 size_t			lengthf(char const *string, va_list *args);
 int				flag_check(t_format *flags, size_t size);
 int				replace_dynwidth(t_format *flags, va_list *args);
-
-unsigned long	float_fraction(float n, long i, unsigned long t, long *s);
 
 void			write_usigned_number(unsigned long n, char *d, t_format *f);
 void			write_signed_number(long number, char *dest, t_format *flags);
@@ -96,4 +90,7 @@ void			write_char(char c, char *dest, t_format *flags);
 void			write_pointer(void *ptr, char *dest, t_format *flags);
 int				og_printf(const char *string, ...);
 void			fill_string(const char *string, va_list *args, char *dest);
+
+void	l_mod(char const *tr, size_t *i, t_format *flags, size_t size);
+void	parse_flags(char const *tr, size_t *i, t_format *flags, size_t size);
 #endif

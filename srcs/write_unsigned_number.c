@@ -1,13 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_unsigned_number.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 17:28:01 by obastug           #+#    #+#             */
+/*   Updated: 2024/12/17 17:29:07 by obastug          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/og_printf.h"
 #include "../libft/libft.h"
-// -, #
-// if 0 # is overlapped
-// 0x123    
-// # is not for u
-static void	write_usigned_number2(unsigned long number, char *dest, t_format *flags, int i)
+
+static void	write_u2(unsigned long number, char *dest, t_format *flags, int i)
 {
 	char	str[17];
-	
+
 	ft_strlcpy(str, "0123456789abcdef", sizeof(str));
 	if (flags->conversion == 'X')
 		ft_strlcpy(str, "0123456789ABCDEF", sizeof(str));
@@ -29,9 +38,9 @@ static void	write_usigned_number2(unsigned long number, char *dest, t_format *fl
 
 void	write_usigned_number(unsigned long number, char *dest, t_format *flags)
 {
-	int			 	i;
+	int				i;
 	int				filler;
-	unsigned long 	tmp;
+	unsigned long	tmp;
 
 	tmp = number;
 	i = 0;
@@ -48,5 +57,5 @@ void	write_usigned_number(unsigned long number, char *dest, t_format *flags)
 	if ((int)og_unumber_len_base(tmp, flags->base) + flags->hash_len >= i
 		&& !flags->flag_zero && flags->flag_hash && flags->conversion != 'u')
 		i += flags->hash_len;
-	write_usigned_number2(number, dest, flags, i);
+	write_u2(number, dest, flags, i);
 }

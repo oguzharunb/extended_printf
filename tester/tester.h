@@ -19,8 +19,6 @@ void	test_flag_check(void);
 void	test_length_total(void);
 void	write_signed_number_tests(void);
 void	write_usigned_number_tests(void);
-void	write_util_tests(void);
-void	write_float_number_tests(void);
 void	write_string_tests(void);
 void	write_char_tests(void);
 void	write_pointer_tests(void);
