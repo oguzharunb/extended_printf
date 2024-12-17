@@ -1,7 +1,5 @@
 #include "../includes/og_printf.h"
 
-// it expects a string with the flags to replace
-// the flag have to be in the order of FLAGS
 void	og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags)
 {
 	size_t	i;

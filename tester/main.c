@@ -19,5 +19,6 @@ int main(void)
 	run_tests(write_string_tests, "write_string_tests");
 	run_tests(write_char_tests, "write_char_tests");
 	run_tests(write_pointer_tests, "write_pointer_tests");
+	run_tests(printf_test, "printf_test");
 	return (0);
 }
