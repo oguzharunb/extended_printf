@@ -11,13 +11,13 @@ void	write_string(char *string, char *dest, t_format *flags)
 	unsigned long	string_len;
 
 	i = 0;
+	start = 0;
 	ft_memset(dest, ' ', flags->width);
 	if (flags->precision >= 0)
 		string_len = flags->precision;
 	else
 		string_len = ft_strlen(string);
-	start = 0;
-	if (!flags->flag_min)
+	if (!flags->flag_min && flags->width)
 		start = flags->width - string_len;
 	while (i < string_len)
 	{
