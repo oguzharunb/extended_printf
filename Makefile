@@ -10,6 +10,7 @@ SRC =	og_unit_length1.c \
 		og_fill_flag_bag.c \
 		utils.c \
 		utils2.c \
+		utils3.c \
 		og_length.c \
 		flag_check.c \
 		dynwidth_replacer.c \

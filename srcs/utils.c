@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:31:38 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:31:47 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/17 18:53:16 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,25 +70,25 @@ size_t	og_number_len_base(long number, size_t base)
 		len++;
 		number = -number;
 	}
-	while(number)
+	while (number)
 	{
 		len++;
-		number /= base;      
+		number /= base;
 	}
 	return (len);
 }
 
-size_t		og_unumber_len_base(unsigned long number, size_t base)
+size_t	og_unumber_len_base(unsigned long number, size_t base)
 {
 	size_t	len;
 
 	if (!number)
 		return (1);
 	len = 0;
-	while(number)
+	while (number)
 	{
 		len++;
-		number /= base;      
+		number /= base;
 	}
 	return (len);
 }

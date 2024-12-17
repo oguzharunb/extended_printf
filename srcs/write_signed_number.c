@@ -1,48 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   write_signed_number.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 18:53:27 by obastug           #+#    #+#             */
+/*   Updated: 2024/12/17 19:30:25 by obastug          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/og_printf.h"
 
-typedef struct	s_arguments
+typedef struct s_arguments
 {
 	long	number;
 	int		i;
 	long	tmp;
 }	t_arguments;
 
-static void	write_signed_number2(long number, char *dest, t_format *flags, int i, long tmp)
+static void	w2(t_arguments *arg, char *dest, t_format *flags)
 {
-	while (number)
+	char	c;
+
+	if (flags->flag_space)
+		c = ' ';
+	else
+		c = '+';
+	while (arg->number)
 	{
-		dest[--i] = (number % 10) + '0';
-		number /= 10;
+		dest[--arg->i] = (arg->number % 10) + '0';
+		arg->number /= 10;
 	}
-	if (tmp < 0)
+	if (arg->tmp < 0)
 	{
 		if (flags->flag_zero)
 			*dest = '-';
 		else
-			dest[i - 1] = '-';
+			dest[arg->i - 1] = '-';
 	}
-	else if (flags->flag_space)
+	else if (flags->flag_space || flags->flag_plus)
 	{
 		if (flags->flag_zero)
-			*dest = ' ';
+			*dest = c;
 		else
-			dest[i - 1] = ' ';
-	}
-	else if (flags->flag_plus)
-	{
-		if (flags->flag_zero)
-			*dest = '+';
-		else
-			dest[i - 1] = '+';
+			dest[arg->i - 1] = c;
 	}
 }
 
+#include <stdio.h>
 void	write_signed_number(long number, char *dest, t_format *flags)
 {
-	int 	i;
-	int		filler;
-	long 	tmp;
+	int			i;
+	int			filler;
+	long		tmp;
+	t_arguments	arg;
 
+	number = cast_number(flags, number);
 	tmp = number;
 	i = 0;
 	if (flags->flag_zero)
@@ -56,6 +70,9 @@ void	write_signed_number(long number, char *dest, t_format *flags)
 	if (number < 0)
 		number = -number;
 	if (flags->flag_min)
-		i = og_number_len_base(tmp, 10);
-	write_signed_number2(number, dest, flags, i, tmp);
+		i = (int)og_number_len_base(tmp, 10);
+	arg.number = number;
+	arg.i = i;
+	arg.tmp = tmp;
+	w2(&arg, dest, flags);
 }

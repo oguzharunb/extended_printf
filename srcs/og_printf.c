@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:23:44 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:24:12 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/17 19:08:02 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	og_printf(const char *string, ...)
 	va_start(args, string);
 	fill_string(string, &args, final_string);
 	write(1, final_string, ft_strlen(final_string));
+	free(final_string);
 	return (ft_strlen(final_string));
 }
