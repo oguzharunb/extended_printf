@@ -1,5 +1,12 @@
 #include "../includes/og_printf.h"
 
+typedef struct	s_arguments
+{
+	long	number;
+	int		i;
+	long	tmp;
+}	t_arguments;
+
 static void	write_signed_number2(long number, char *dest, t_format *flags, int i, long tmp)
 {
 	while (number)
