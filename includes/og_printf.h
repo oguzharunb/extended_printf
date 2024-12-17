@@ -83,5 +83,7 @@ void			write_signed_number(long number, char *dest, t_format *flags);
 void			write_float_number(float number, char *dest);
 void			write_string(char *string, char *dest, t_format *flags);
 void			write_char(char c, char *dest, t_format *flags);
+void			write_pointer(void *ptr, char *dest, t_format *flags);
 int				og_printf(const char *string, ...);
+void			fill_string(const char *string, va_list *args, char *dest);
 #endif
