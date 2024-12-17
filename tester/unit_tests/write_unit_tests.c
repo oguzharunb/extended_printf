@@ -178,3 +178,26 @@ void	write_char_tests(void)
 	test_function(!ft_memcmp("a ", str, ft_strlen(str)), "Test 3: char and width and minus flag");
 
 }
+
+void	write_pointer_tests(void)
+{
+	char		*str = calloc(50, 1);
+	t_format	flags;
+
+	og_fill_flag_bag("%p", 2, &flags);
+	write_pointer(NULL, str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("(nil)", str, ft_strlen(str)), "Test 1: NULL");
+
+	ft_bzero(str, 50);
+	og_fill_flag_bag("%p", 2, &flags);
+	write_pointer((void *)0x12, str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("0x12", str, ft_strlen(str)), "Test 2: a pointer to 0x12");
+
+	ft_bzero(str, 50);
+	og_fill_flag_bag("%11p", 4, &flags);
+	write_pointer((void *)0x12, str, &flags);
+	printf("'%s'\n", str);
+	test_function(!ft_memcmp("       0x12", str, ft_strlen(str)), "Test 3: a pointer to 0x12 with width");
+}
