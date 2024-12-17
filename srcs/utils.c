@@ -80,14 +80,3 @@ size_t		og_unumber_len_base(unsigned long number, size_t base)
 	}
 	return (len);
 }
-
-long	cast_number(t_format *flags, long nbr)
-{
-	if (flags->lm_long == 0)
-		nbr = (int)nbr;
-	if (flags->lm_short == 1)
-		nbr = (short)nbr;
-	else if (flags->lm_short == 2)
-		nbr = (char)nbr;
-	return (nbr);
-}
