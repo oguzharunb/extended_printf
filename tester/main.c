@@ -18,5 +18,6 @@ int main(void)
 	run_tests(write_float_number_tests, "write_float_number_tests");
 	run_tests(write_string_tests, "write_string_tests");
 	run_tests(write_char_tests, "write_char_tests");
+	run_tests(write_pointer_tests, "write_pointer_tests");
 	return (0);
 }
