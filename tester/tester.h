@@ -23,4 +23,5 @@ void	write_util_tests(void);
 void	write_float_number_tests(void);
 void	write_string_tests(void);
 void	write_char_tests(void);
+void	write_pointer_tests(void);
 #endif
