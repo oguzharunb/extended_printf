@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   og_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 16:14:36 by obastug           #+#    #+#             */
+/*   Updated: 2024/12/17 16:17:26 by obastug          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef OG_PRINTF_H
 # define OG_PRINTF_H
 # define CONVERSIONS "bscdeaEfiouxX%"
@@ -20,16 +32,14 @@
 # define S_FLAGS "- "
 # define C_FLAGS ""
 
-# define DOUBLE_EXPONENT_MASK	0b0111111111110000000000000000000000000000000000000000000000000000//9218868437227405312
-# define DOUBLE_PRECISION_MASK	0b0000000000001111111111111111111111111111111111111111111111111111//4503599627370495
-# define FLOAT_EXPONENT_MASK	0b01111111100000000000000000000000//2139095040
-# define MASK_64_TO_32			0b0000000000000000000000000000000011111111111111111111111111111111 //4294967295
-# define FLOAT_FRACTION_MASK	0b00000000011111111111111111111111
-# define FRACTION_ITER			0b00000000010000000000000000000000
+# define DOUBLE_EXPONENT_MASK	(long)9218868437227405312L
+# define DOUBLE_PRECISION_MASK	(long)4503599627370495L
+# define FLOAT_EXPONENT_MASK	2139095040
+# define MASK_64_TO_32			(unsigned int)4294967295U
+# define FLOAT_FRACTION_MASK	8388607
+# define FRACTION_ITER			4194304
 # include <stddef.h>
 # include <stdarg.h>
-
-//MILESTONE 1
 
 typedef struct s_format
 {
@@ -47,9 +57,9 @@ typedef struct s_format
 	int		base;
 	int		hash_len;
 	char	conversion;
-} t_format;
+}	t_format;
 
-void			og_fill_flag_bag(char const *to_replace, size_t size, t_format*flags);
+void			og_fill_flag_bag(char const *to_r, size_t s, t_format *f);
 void			print_flags(t_format*flags); // temporary
 int				og_isin(char const *str, char c);
 void			reset_flags(t_format*flags);
@@ -76,9 +86,9 @@ size_t			lengthf(char const *string, va_list *args);
 int				flag_check(t_format *flags, size_t size);
 int				replace_dynwidth(t_format *flags, va_list *args);
 
-unsigned long	float_fraction(float number, long i, unsigned long total, long *step, unsigned long iter);
+unsigned long	float_fraction(float n, long i, unsigned long t, long *s);
 
-void			write_usigned_number(unsigned long number, char *dest, t_format *flags);
+void			write_usigned_number(unsigned long n, char *d, t_format *f);
 void			write_signed_number(long number, char *dest, t_format *flags);
 void			write_float_number(float number, char *dest);
 void			write_string(char *string, char *dest, t_format *flags);

@@ -3,6 +3,7 @@
 
 // (number, 0, 0, 0, 5)
 
+#include <stdio.h>
 void	write_float_number(float number, char *dest)
 {
     unsigned long	fraction;
@@ -12,7 +13,8 @@ void	write_float_number(float number, char *dest)
 
 	step = 0;
 	integer = (unsigned long)number;
-	fraction = float_fraction(number, 0, 0, &step, 5);
+	fraction = float_fraction(number, 0, 0, &step);
+	printf("varan 2 (fraction): %li\n", fraction);
     i = og_unumber_len_base(fraction, 10) + og_unumber_len_base(integer, 10);
     //ft_memset(dest, '0', i);
 	if (!fraction)
@@ -30,14 +32,17 @@ void	write_float_number(float number, char *dest)
         integer /= 10;
         i--;
     }
+	printf("varan 3 (what is written): %s\n", dest);
 }
 
 // number, 0, 0, &step = 0, 5
-unsigned long	float_fraction(float number, long i, unsigned long total, long *step, unsigned long iter)
+unsigned long	float_fraction(float number, long i, unsigned long total, long *step)
 {
-	long exponent;
-	long fraction_b;
+	long			exponent;
+	long			fraction_b;
+	unsigned long	iter;
 
+	iter = 5;
 	fraction_b = *(int *)&number;
 	i = 0;
 	exponent = ((*(int *)&number & FLOAT_EXPONENT_MASK) >> 23) - 127;
