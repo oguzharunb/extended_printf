@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:17:49 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 18:52:03 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:40:48 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	og_length_s(t_format*flags, char const *str)
 {
 	int	len;
 
+	if (!str)
+		return (0);
 	len = ft_strlen(str);
 	if (flags->precision < len && flags->precision != -1)
 		len = flags->precision;

@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:31:25 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:31:27 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:39:45 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	write_string(char *string, char *dest, t_format *flags)
 	unsigned long	start;
 	unsigned long	string_len;
 
+	if (!string)
+		return ;
 	i = 0;
 	start = 0;
 	ft_memset(dest, ' ', flags->width);
