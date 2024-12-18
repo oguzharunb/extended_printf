@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:30:15 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:30:22 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:24:47 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 void	write_char(char c, char *dest, t_format *flags)
 {
-	ft_memset(dest, ' ', flags->width);
+	if (flags->width)
+		ft_memset(dest, ' ', flags->width);
 	if (flags->flag_min)
 		dest[0] = c;
 	else
