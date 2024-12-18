@@ -31,7 +31,8 @@ int	og_printf(const char *string, ...)
 		return (0);
 	va_start(args, string);
 	fill_string(string, &args, final_string);
-	write(1, final_string, ft_strlen(final_string));
+	len = ft_strlen(final_string);
+	write(1, final_string, len);
 	free(final_string);
-	return (ft_strlen(final_string));
+	return (len);
 }
