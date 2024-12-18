@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 18:53:27 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 12:54:12 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:19:59 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@ static int	omg(char *dest)
 	return (1);
 }
 
-static void	w2(t_arguments *arg, char *dest, t_format *flags)
+static void	w2(t_arguments *arg, char *dest, t_format *flags, char c)
 {
-	char	c;
-
 	if (!arg->tmp && omg(dest))
 		return ;
+	c = '+';
 	if (flags->flag_space)
 		c = ' ';
-	else
-		c = '+';
 	while (arg->number)
 	{
 		dest[--arg->i] = (arg->number % 10) + '0';
@@ -56,7 +53,6 @@ static void	w2(t_arguments *arg, char *dest, t_format *flags)
 	}
 }
 
-#include <stdio.h>
 void	write_signed_number(long number, char *dest, t_format *flags)
 {
 	int			i;
@@ -82,5 +78,5 @@ void	write_signed_number(long number, char *dest, t_format *flags)
 	arg.number = number;
 	arg.i = i;
 	arg.tmp = tmp;
-	w2(&arg, dest, flags);
+	w2(&arg, dest, flags, 'a');
 }

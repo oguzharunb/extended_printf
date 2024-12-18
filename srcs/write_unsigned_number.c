@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:28:01 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:29:07 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:21:31 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ static void	write_u2(unsigned long number, char *dest, t_format *flags, int i)
 {
 	char	str[17];
 
+	if (!number)
+	{
+		*dest = '0';
+		return ;
+	}
 	ft_strlcpy(str, "0123456789abcdef", sizeof(str));
 	if (flags->conversion == 'X')
 		ft_strlcpy(str, "0123456789ABCDEF", sizeof(str));
