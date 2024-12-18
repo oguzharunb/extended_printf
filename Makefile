@@ -2,7 +2,7 @@ COMPILER = cc
 INCLUDES = ./includes/
 SOURCE_DIR = ./srcs/
 FLAG = -Wall -Werror -Wextra
-NAME = og_printf.a
+NAME = ft_printf.a
 LIBFT = ./libft/libft.a
 SRC_DIR = ./srcs
 SRC =	og_unit_length1.c \
@@ -14,7 +14,7 @@ SRC =	og_unit_length1.c \
 		og_length.c \
 		flag_check.c \
 		dynwidth_replacer.c \
-		og_printf.c \
+		ft_printf.c \
 		write_unsigned_number.c \
 		write_signed_number.c \
 		write_string.c \

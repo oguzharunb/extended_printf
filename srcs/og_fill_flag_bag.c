@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/og_printf.h"
+#include "../includes/ft_printf.h"
 
 void	parse_width(char const *tr, size_t *i, size_t size, t_format *flags)
 {

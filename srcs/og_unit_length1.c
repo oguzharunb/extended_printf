@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/og_printf.h"
+#include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
 size_t	og_length_s(t_format*flags, char const *str)

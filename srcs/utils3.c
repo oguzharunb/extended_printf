@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/og_printf.h"
+#include "../includes/ft_printf.h"
 
 long	cast_number(t_format *flags, long nbr)
 {

@@ -1,2 +1,2 @@
-# og_printf
+# ft_printf
 better than printf

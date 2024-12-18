@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/og_printf.h"
+#include "../includes/ft_printf.h"
 #include "../libft/libft.h"
 
 void	write_char(char c, char *dest, t_format *flags)

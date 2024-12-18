@@ -3,8 +3,8 @@ libft/*.o
 srcs/*.o
 tester/*.o
 tester/unit_tests/*.o
-og_printf
+ft_printf
 *.o
 a.out
-og_printf.a
+ft_printf.a
 tester/tester

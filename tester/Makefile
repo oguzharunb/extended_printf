@@ -9,7 +9,7 @@ SRCS =	tester.c \
 		unit_tests/write_unit_tests.c \
 		printf_tests/printf_test.c
 OBJECTS = $(SRCS:.c=.o)
-LIB = ../og_printf.a
+LIB = ../ft_printf.a
 HEADER = tester.h
 LIBFT = ../libft/libft.a
 

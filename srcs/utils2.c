@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/og_printf.h"
+#include "../includes/ft_printf.h"
 
 void	parse_flags(char const *tr, size_t *i, t_format *flags, size_t size)
 {

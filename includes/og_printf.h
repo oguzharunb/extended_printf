@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   og_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OG_PRINTF_H
-# define OG_PRINTF_H
+#ifndef ft_printf_H
+# define ft_printf_H
 # define CONVERSIONS "bscdeaEfiouxX%"
 # define FLAGS "0#+- "
 # define LENGTH_MODIFIER "hl"
@@ -88,7 +88,7 @@ void			write_float_number(float number, char *dest);
 void			write_string(char *string, char *dest, t_format *flags);
 void			write_char(char c, char *dest, t_format *flags);
 void			write_pointer(void *ptr, char *dest, t_format *flags);
-int				og_printf(const char *string, ...);
+int				ft_printf(const char *string, ...);
 void			fill_string(const char *string, va_list *args, char *dest);
 
 void	l_mod(char const *tr, size_t *i, t_format *flags, size_t size);

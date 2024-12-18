@@ -1,4 +1,4 @@
-#include "../includes/og_printf.h"
+#include "../includes/ft_printf.h"
 #include "tester.h"
 
 #include <stdio.h>
