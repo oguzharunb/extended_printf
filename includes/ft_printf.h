@@ -6,12 +6,12 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:14:36 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 13:01:36 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:20:56 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ft_printf_H
-# define ft_printf_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # define CONVERSIONS "pbscdeaEfiouxX%"
 # define FLAGS "0#+- "
 # define LENGTH_MODIFIER "hl"
@@ -91,6 +91,6 @@ void			write_pointer(void *ptr, char *dest, t_format *flags);
 int				ft_printf(const char *string, ...);
 void			fill_string(const char *string, va_list *args, char *dest);
 
-void	l_mod(char const *tr, size_t *i, t_format *flags, size_t size);
-void	parse_flags(char const *tr, size_t *i, t_format *flags, size_t size);
+void			l_mod(char const *tr, size_t *i, t_format *flags, size_t size);
+void			parse_flags(char const *tr, size_t *i, t_format *f, size_t s);
 #endif
