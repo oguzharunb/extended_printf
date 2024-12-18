@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:39:12 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 19:16:18 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:20:16 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	write_format_to_dest(t_format *flags, va_list *args, char *dest)
 	else if (flags->conversion == 'p')
 		write_pointer(va_arg(*args, void *), dest, flags);
 	else if (flags->conversion == '%')
-		*dest = '%'; 
+		*dest = '%';
 	return (0);
 }
 

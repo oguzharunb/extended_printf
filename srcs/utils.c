@@ -6,14 +6,12 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:31:38 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 18:53:16 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:14:45 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
-
-#include <stdio.h> // temporary
 
 int	og_isin(char const *str, char c)
 {
