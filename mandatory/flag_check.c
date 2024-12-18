@@ -6,14 +6,13 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:01:36 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:02:06 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:28:46 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <unistd.h>
 
-#include <stdio.h> //temporary
 int	flag_check(t_format *flags, size_t expected_size)
 {
 	size_t	size;
