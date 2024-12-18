@@ -9,3 +9,4 @@ a.out
 libftprintf.a
 tester/tester
 printfTester/
+main.c

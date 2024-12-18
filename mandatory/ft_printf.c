@@ -5,65 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/18 13:50:26 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 13:50:26 by obastug          ###   ########.fr       */
+/*   Created: 2024/12/17 17:23:44 by obastug           #+#    #+#             */
+/*   Updated: 2024/12/18 13:28:40 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
+#include "../libft/libft.h"
 #include <stdarg.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-static int	specifier_check(const char *format, va_list args)
-{
-	int	count;
-
-	count = -1;
-	if (*format == '%')
-		count = ft_putchar(*format);
-	else if (*format == 'c')
-		count = ft_putchar(va_arg(args, int));
-	else if (*format == 's')
-		count = ft_putstr(va_arg(args, char *));
-	else if (*format == 'd' || *format == 'i')
-		count = ft_putnbr(va_arg(args, int));
-	else if (*format == 'u')
-		count = ft_putunbr(va_arg(args, unsigned int));
-	else if (*format == 'x' || *format == 'X')
-		count = ft_puthexnbr(va_arg(args, unsigned int), *format);
-	else if (*format == 'p')
-		count = ft_putaddr(va_arg(args, void *));
-	else if (*format)
-	{
-		count = ft_putchar(*(format - 1));
-		count += ft_putchar(*format);
-	}
-	return (count);
-}
-
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *string, ...)
 {
 	va_list	args;
-	int		count;
-	int		tmp;
+	char	*final_string;
+	size_t	len;
 
-	va_start(args, format);
-	count = 0;
-	if (!format)
+	va_start(args, string);
+	len = lengthf(string, &args);
+	if (!len)
+		return (0);
+	final_string = ft_calloc(len + 1, 1);
+	if (!final_string)
 		return (-1);
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			tmp = specifier_check(format, args);
-			if (tmp == -1)
-				return (-1);
-			count += tmp;
-		}
-		else
-			count += ft_putchar(*format);
-		format++;
-	}
-	va_end(args);
-	return (count);
+	va_start(args, string);
+	fill_string(string, &args, final_string);
+	len = ft_strlen(final_string);
+	write(1, final_string, len);
+	free(final_string);
+	return (len);
 }

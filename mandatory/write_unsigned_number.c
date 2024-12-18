@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:28:01 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 13:21:31 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:07:23 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	write_u2(unsigned long number, char *dest, t_format *flags, int i)
 {
 	char	str[17];
 
+	number = cast_unumber(flags, number);
 	if (!number)
 	{
 		*dest = '0';
