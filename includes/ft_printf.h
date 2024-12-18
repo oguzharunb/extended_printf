@@ -6,13 +6,13 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:14:36 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 17:12:50 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 13:01:36 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ft_printf_H
 # define ft_printf_H
-# define CONVERSIONS "bscdeaEfiouxX%"
+# define CONVERSIONS "pbscdeaEfiouxX%"
 # define FLAGS "0#+- "
 # define LENGTH_MODIFIER "hl"
 # define NUMBERS "0123456789"

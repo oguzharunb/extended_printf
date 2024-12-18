@@ -6,5 +6,6 @@ tester/unit_tests/*.o
 ft_printf
 *.o
 a.out
-ft_printf.a
+libftprintf.a
 tester/tester
+printfTester/

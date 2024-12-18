@@ -3,6 +3,6 @@
 #include <limits.h>
 int main(void)
 {
-	ft_printf("hello world '%d'\n", -1);
+	ft_printf("hello world '%c'\n", 'a');
 	return (0);
 }

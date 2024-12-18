@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 18:53:27 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/17 19:30:25 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 12:54:12 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,18 @@ typedef struct s_arguments
 	long	tmp;
 }	t_arguments;
 
+static int	omg(char *dest)
+{
+	*dest = '0';
+	return (1);
+}
+
 static void	w2(t_arguments *arg, char *dest, t_format *flags)
 {
 	char	c;
 
+	if (!arg->tmp && omg(dest))
+		return ;
 	if (flags->flag_space)
 		c = ' ';
 	else
