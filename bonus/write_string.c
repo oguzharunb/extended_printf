@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:31:25 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 13:39:45 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:29:48 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../libft/libft.h"
 
 // 'minus', 'width', 'precision'
-
 // "hello    ", "     hello", "   hel", "hel    "
 void	write_string(char *string, char *dest, t_format *flags)
 {
@@ -22,7 +21,7 @@ void	write_string(char *string, char *dest, t_format *flags)
 	unsigned long	start;
 	unsigned long	string_len;
 
-	if (!string)
+	if (!string && ft_strlcpy(dest, "(null)", 6))
 		return ;
 	i = 0;
 	start = 0;
@@ -33,6 +32,8 @@ void	write_string(char *string, char *dest, t_format *flags)
 		string_len = ft_strlen(string);
 	if (!flags->flag_min && flags->width)
 		start = flags->width - string_len;
+	if (flags->width < (int)string_len)
+		start = 0;
 	while (i < string_len)
 	{
 		dest[i + start] = string[i];
