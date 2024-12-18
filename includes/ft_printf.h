@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:14:36 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 13:20:56 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:14:46 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_format
 }	t_format;
 
 void			og_fill_flag_bag(char const *to_r, size_t s, t_format *f);
-void			print_flags(t_format*flags); // temporary
 int				og_isin(char const *str, char c);
 void			reset_flags(t_format*flags);
 void			set_base(t_format *flags);
