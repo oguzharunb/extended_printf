@@ -6,14 +6,13 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:39:12 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 14:22:51 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 15:27:17 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 #include "../includes/ft_printf.h"
 #include "../libft/libft.h"
-#include <unistd.h>
 
 typedef struct s_StringState
 {
