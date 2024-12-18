@@ -6,7 +6,7 @@
 /*   By: obastug <obastug@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:31:25 by obastug           #+#    #+#             */
-/*   Updated: 2024/12/18 14:29:48 by obastug          ###   ########.fr       */
+/*   Updated: 2024/12/18 14:52:19 by obastug          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	write_string(char *string, char *dest, t_format *flags)
 	unsigned long	start;
 	unsigned long	string_len;
 
-	if (!string && ft_strlcpy(dest, "(null)", 6))
+	if (!string && ft_strlcpy(dest, "(null)", 7))
 		return ;
 	i = 0;
 	start = 0;

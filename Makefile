@@ -29,11 +29,7 @@ BONUS_OBJS = $(addprefix bonus/, $(BONUS_SRCS:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(MANDATORY_OBJS) $(LIBFT_OBJS)
-	ar -rcs $(NAME) $(MANDATORY_OBJS) $(LIBFT_OBJS)
-
-bonus: $(BONUS_OBJS) $(LIBFT_OBJS)
-	
+$(NAME): $(BONUS_OBJS) $(LIBFT_OBJS)
 	ar -rcs $(NAME) $(BONUS_OBJS) $(LIBFT_OBJS)
 
 %.o: %.c
